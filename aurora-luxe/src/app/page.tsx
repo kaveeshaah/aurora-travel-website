@@ -2,7 +2,8 @@
 
 // import { useState, useEffect } from 'react';
 // import Image from 'next/image';
-import Navbar from '@/components/Navbar';
+// import Navbar from '@/components/Navbar';
+import SideNav from '../components/SideNav';
 // import Footer from '@/components/Footer';
 import HeroSection from '../components/HeroSection';
 // Commented out other components - keeping only homepage
@@ -20,7 +21,8 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-white">
-      <Navbar />
+      <SideNav />
+      {/* <Navbar /> */}
       
       <main className="relative">
         <HeroSection />
