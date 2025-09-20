@@ -40,7 +40,7 @@ export default function HeroSection() {
           </h1>
           
           <p className="text-lg sm:text-xl lg:text-2xl mb-8 text-gray-200 max-w-2xl mx-auto leading-relaxed">
-            Tailored luxury journeys to the world's most exclusive destinations
+            Tailored luxury journeys to the world&apos;s most exclusive destinations
           </p>
           
           <button className="bg-transparent  border-white text-white px-8 py-4 rounded-full text-lg font-medium hover:bg-white hover:text-gray-900 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl">
