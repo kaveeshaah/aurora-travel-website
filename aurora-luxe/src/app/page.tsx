@@ -3,9 +3,9 @@
 // import { useState, useEffect } from 'react';
 // import Image from 'next/image';
 // import Navbar from '@/components/Navbar';
-import SideNav from '../components/SideNav';
-// import Footer from '@/components/Footer';
-import HeroSection from '../components/HeroSection';
+import SideNav from '../components/layout/SideNav';
+// import Footer from '@/components/layout/Footer';
+import HeroSection from '../components/home/HeroSection';
 // Commented out other components - keeping only homepage
 // import DestinationsGrid from '@/components/DestinationsGrid';
 // import PromiseSection from '@/components/PromiseSection';
