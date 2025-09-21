@@ -116,7 +116,7 @@ export default function Footer() {
                 <span className="font-serif text-2xl font-bold">Aurora Luxe</span>
               </div>
               <p className="text-gray-300 mb-6 leading-relaxed">
-                Crafting extraordinary luxury travel experiences for the world's most discerning travelers.
+                Crafting extraordinary luxury travel experiences for the worlds most discerning travelers.
               </p>
               <div className="space-y-2">
                 <p className="text-gray-300">
