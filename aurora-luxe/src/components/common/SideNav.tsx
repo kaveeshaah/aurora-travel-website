@@ -28,7 +28,7 @@ export default function SideNav() {
       {/* Top hamburger */}
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="mb-10 p-3 rounded-md border border-gray-100 bg-white hover:bg-gray-20 transition"
+        className="mb-10 p-3 rounded-md border border-gray-100 bg-white hover:bg-gray-50 transition"
         aria-label="Toggle navigation menu"
       >
         <Menu className="w-6 h-6 text-black" />
@@ -44,8 +44,8 @@ export default function SideNav() {
               className="flex items-center w-16 group-hover:w-full px-4 h-12 rounded-lg bg-gray-50 text-gray-700 hover:bg-black hover:text-white transition-all duration-300"
               aria-label={item.label}
             >
-              <Icon className="w-8 h-8 flex-shrink-0" />
-              <span className="ml-4 text-lg font-bold origin-left scale-0 group-hover:scale-100 transition-transform duration-300 opacity-0 group-hover:opacity-100">
+              <Icon className="w-6 h-6 flex-shrink-0" />
+              <span className="ml-4 text-sm font-bold origin-left scale-0 group-hover:scale-100 transition-transform duration-300 opacity-0 group-hover:opacity-100 whitespace-nowrap">
                 {item.label}
               </span>
             </Link>
@@ -53,8 +53,14 @@ export default function SideNav() {
         })}
       </nav>
       {/* Vertical brand name at bottom */}
-      <div className="mb-8">
+      <div className="mb-8 group-hover:hidden">
         <span className="block text-xs font-serif text-black font-bold tracking-wide origin-bottom-left rotate-90 whitespace-nowrap">
+          Aurora Luxe Travels
+        </span>
+      </div>
+      {/* Horizontal brand name when expanded */}
+      <div className="mb-8 hidden group-hover:block">
+        <span className="text-xs font-serif text-black font-bold tracking-wide">
           Aurora Luxe Travels
         </span>
       </div>
