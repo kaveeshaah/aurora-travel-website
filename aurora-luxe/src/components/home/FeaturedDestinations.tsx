@@ -5,10 +5,7 @@ import React from 'react';
 const featuredDestinations = [
   { id: 1, name: 'Maldives', image: '/images/maldivs.jpg' },
   { id: 2, name: 'Nethearland', image: '/images/netherlands.jpg' },
-  { id: 3, name: 'Bali', image: '/images/bali.jpg' },
-  { id: 4, name: 'Sri Lanka', image: '/images/sri-lanka.jpg' },
-  { id: 5, name: 'Maldives', image: '/images/maldivs.jpg' },
-  { id: 6, name: 'Nethearland', image: '/images/netherlands.jpg' }
+  { id: 3, name: 'Bali', image: '/images/bali.jpg' }
  
 ];
 

@@ -2,6 +2,8 @@
 "use client";
 
 import React from "react";
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
 
 const featuredExperiences = [
   {
@@ -35,36 +37,38 @@ const featuredExperiences = [
 
 const FeaturedExperiences = () => (
   <section className="w-full flex flex-col items-center justify-center py-12">
-    <h2 className="text-center mb-12 text-4xl font-bold">Featured Experiences</h2>
-
-    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-y-16 gap-x-12 max-w-7xl w-full justify-center items-center">
-      {featuredExperiences.map((exp) => (
-        <div
-          key={exp.id}
-          className="relative rounded-3xl overflow-hidden shadow-lg flex items-center justify-center aspect-[9/16] bg-white"
-        >
-          <img
-            src={exp.image}
-            alt={exp.title}
-            className="w-full h-full object-cover"
-          />
-          <div className="absolute inset-0 flex flex-col items-center justify-center bg-black/30">
-            <span className="text-white text-2xl font-bold drop-shadow-lg mb-4 text-center px-4">
-              {exp.title}
-            </span>
-            <span className="text-white text-sm mb-6">{exp.location}</span>
-            <span className="text-amber-400 text-lg font-semibold mb-8">
-              {exp.price} • {exp.duration}
-            </span>
-            <button
-              className="px-6 py-2 text-white border-4 border-white rounded-full text-lg font-medium hover:bg-white hover:text-black transition-all duration-300"
-              aria-label={`Book ${exp.title}`}
-            >
-              Book Now
-            </button>
-          </div>
-        </div>
-      ))}
+    <h2 className="text-center mb-12 text-4xl font-bold">
+      Featured Experiences
+    </h2>
+    <div className="w-full max-w-5xl">
+      <Swiper slidesPerView={1} loop={true}>
+        {featuredExperiences.map((exp) => (
+          <SwiperSlide key={exp.id}>
+            <div className="relative h-[420px] md:h-[520px] rounded-3xl overflow-hidden shadow-lg flex items-center justify-center">
+              <img
+                src={exp.image}
+                alt={exp.title}
+                className="w-full h-full object-cover"
+              />
+              <div className="absolute left-0 top-0 h-full md:w-[420px] w-[90vw] bg-gray-200 bg-opacity-90 flex flex-col justify-center px-8 shadow-xl z-10">
+                <span className="text-3xl font-semibold mb-4 text-gray-900">
+                  Exclusive Access
+                </span>
+                <span className="text-lg font-bold mb-2 text-gray-800">
+                  {exp.title}
+                </span>
+                <span className="text-sm mb-4 text-gray-700">{exp.location}</span>
+                <span className="text-amber-500 mb-8 text-lg font-semibold">
+                  {exp.price} • {exp.duration}
+                </span>
+                <button className="w-32 py-2 text-gray-900 border-2 border-gray-400 rounded-full font-medium bg-white hover:bg-gray-900 hover:text-white transition-all duration-300">
+                  View
+                </button>
+              </div>
+            </div>
+          </SwiperSlide>
+        ))}
+      </Swiper>
     </div>
   </section>
 );

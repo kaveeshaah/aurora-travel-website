@@ -11,7 +11,7 @@ export default function HeroSection() {
   }, []);
 
   return (
-    <section className="relative h-screen flex items-center justify-center overflow-hidden">
+    <section className="relative h-screen flex items-center justify-start overflow-hidden">
       {/* Background Image */}
       <div className="absolute inset-0 z-0">
         <div className="w-full h-full bg-gradient-to-br from-slate-900 via-blue-900 to-slate-800">
@@ -27,24 +27,26 @@ export default function HeroSection() {
       </div>
 
       {/* Content */}
-      <div className="relative z-10 text-center text-white px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto">
-        <div className={`transition-all duration-1000 delay-300 ${
-          isVisible 
-            ? 'opacity-100 translate-y-0' 
-            : 'opacity-0 translate-y-8'
-        }`}>
-          <h1 className="font-serif text-4xl sm:text-5xl lg:text-7xl font-bold mb-6 leading-tight">
-            WHERE ELEGANCE
+      <div className="relative z-10 flex flex-col items-start justify-center px-6 sm:px-16 lg:px-36 max-w-3xl h-full">
+        <div
+          className={`transition-all duration-1000 delay-300 ${
+            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+          }`}
+        >
+          <h1 className="font-serif text-4xl sm:text-5xl lg:text-7xl font-bold mb-6 leading-tight text-left">
+            WHERE
             <br />
-            <span className="text-amber-400">MEETS ADVENTURE</span>
+            ELEGANCE
+            <br />
+            MEETS ADVENTURE
           </h1>
-          
-          <p className="text-lg sm:text-xl lg:text-2xl mb-8 text-gray-200 max-w-2xl mx-auto leading-relaxed">
+
+          <p className="text-lg sm:text-xl lg:text-2xl mb-8 text-gray-200 max-w-xl leading-relaxed text-left">
             Tailored luxury journeys to the world&apos;s most exclusive destinations
           </p>
-          
-          <button className="bg-transparent  border-white text-white px-8 py-4 rounded-full text-lg font-medium hover:bg-white hover:text-gray-900 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl">
-            WHERE TO
+
+          <button className="bg-transparent border px-8 py-4 rounded-full text-lg font-medium text-white border-white hover:bg-white hover:text-gray-900 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl">
+            WHERE TO?
           </button>
         </div>
       </div>
