@@ -22,11 +22,11 @@ export default function SideNav() {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <aside className="fixed left-0 top-0 h-screen w-20 flex flex-col justify-between items-center bg-white shadow-lg z-50">
+    <aside className="fixed left-0 top-0 h-screen w-20 flex flex-col justify-between items-center bg-white shadow-lg z-50 pt-6">
       {/* Top hamburger */}
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="mt-6 mb-10 p-3 rounded-md border border-gray-100 bg-white hover:bg-gray-50 transition"
+        className="mb-10 p-3 rounded-md border border-gray-100 bg-white hover:bg-gray-50 transition"
         aria-label="Toggle navigation menu"
       >
         <Menu className="w-6 h-6 text-black" />
