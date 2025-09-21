@@ -6,7 +6,10 @@ const featuredDestinations = [
   { id: 1, name: 'Maldives', image: '/images/maldivs.jpg' },
   { id: 2, name: 'Nethearland', image: '/images/netherlands.jpg' },
   { id: 3, name: 'Bali', image: '/images/bali.jpg' },
-  { id: 4, name: 'Sri Lanka', image: '/images/sri-lanka.jpg' }
+  { id: 4, name: 'Sri Lanka', image: '/images/sri-lanka.jpg' },
+  { id: 5, name: 'Maldives', image: '/images/maldivs.jpg' },
+  { id: 6, name: 'Nethearland', image: '/images/netherlands.jpg' }
+ 
 ];
 
 const FeaturedDestinations = () => (
@@ -14,11 +17,11 @@ const FeaturedDestinations = () => (
   <br></br>
     <h2 className="text-center mb-16 text-4xl font-bold">Featured Destinations</h2><br></br><br></br>
     <br></br>
-    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-y-16 gap-x-40 max-w-7xl w-full justify-center items-center">
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-y-16 gap-x-20 max-w-7xl w-full justify-center items-center">
       {featuredDestinations.map(dest => (
         <div
           key={dest.id}
-          className="relative rounded-3xl overflow-hidden shadow-lg flex items-center justify-center aspect-square bg-white"
+          className="relative rounded-3xl overflow-hidden shadow-lg flex items-center justify-center aspect-[9/16] bg-white"
         >
           <img
             src={dest.image}
