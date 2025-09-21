@@ -1,10 +1,10 @@
 'use client';
 
-import Footer from '../components/common/Footer';
+// import Footer from '../components/common/Footer';
 import HeroSection from '../components/home/HeroSection';
 import FeaturedDestinations from '../components/home/FeaturedDestinations';
-import WhyChooseUs from '../components/home/WhyChooseUs';
-import Testimonials from '../components/home/Testimonials';
+// import WhyChooseUs from '../components/home/WhyChooseUs';
+// import Testimonials from '../components/home/Testimonials';
 
 export default function Home() {
   return (
@@ -12,10 +12,10 @@ export default function Home() {
       <main className="relative">
         <HeroSection />
         <FeaturedDestinations />
-        <WhyChooseUs />
-        <Testimonials />
+        {/* <WhyChooseUs /> */}
+        {/* <Testimonials /> */}
       </main>
-      <Footer />
+      
     </div>
   );
 }
