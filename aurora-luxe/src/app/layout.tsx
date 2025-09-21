@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Playfair_Display, Inter } from "next/font/google";
 import "./globals.css";
-import SideNav from "@/components/layout/SideNav";
+import SideNav from "@/components/common/SideNav";
 
 const playfair = Playfair_Display({
   variable: "--font-playfair",
@@ -31,12 +31,10 @@ export default function RootLayout({
         className={`${playfair.variable} ${inter.variable} font-sans antialiased`}
         suppressHydrationWarning
       >
-        <div className="flex min-h-screen">
-          <SideNav />
-          <main className="flex-1 ml-16">
-            {children}
-          </main>
-        </div>
+        <SideNav />
+        <main className="min-h-screen">
+          {children}
+        </main>
       </body>
     </html>
   );
