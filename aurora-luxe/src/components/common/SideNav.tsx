@@ -22,27 +22,32 @@ export default function SideNav() {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <aside className="fixed left-0 top-0 h-screen w-20 flex flex-col justify-between items-center bg-white shadow-lg z-50 pt-6">
+    <aside
+      className="group fixed left-0 top-0 h-screen w-20 hover:w-60 transition-all duration-300 flex flex-col justify-between items-center bg-white shadow-lg z-50 pt-6"
+    >
       {/* Top hamburger */}
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="mb-10 p-3 rounded-md border border-gray-100 bg-white hover:bg-gray-50 transition"
+        className="mb-10 p-3 rounded-md border border-gray-100 bg-white hover:bg-gray-20 transition"
         aria-label="Toggle navigation menu"
       >
         <Menu className="w-6 h-6 text-black" />
       </button>
-      {/* Icons */}
-      <nav className="flex flex-col gap-8">
-        {navItems.map((item, idx) => {
+      {/* Icons and labels */}
+      <nav className="flex flex-col gap-8 w-full items-center">
+        {navItems.map((item) => {
           const Icon = item.icon;
           return (
             <Link
               href={item.href}
               key={item.label}
-              className="flex items-center justify-center w-12 h-12 rounded-lg bg-gray-50 text-gray-700 hover:bg-black hover:text-white transition"
+              className="flex items-center w-16 group-hover:w-full px-4 h-12 rounded-lg bg-gray-50 text-gray-700 hover:bg-black hover:text-white transition-all duration-300"
               aria-label={item.label}
             >
-              <Icon className="w-6 h-6" />
+              <Icon className="w-8 h-8 flex-shrink-0" />
+              <span className="ml-4 text-lg font-bold origin-left scale-0 group-hover:scale-100 transition-transform duration-300 opacity-0 group-hover:opacity-100">
+                {item.label}
+              </span>
             </Link>
           );
         })}
