@@ -13,7 +13,7 @@ import { useState } from 'react';
 
 const navItems = [
   { icon: Home, label: 'Home', href: '/' },
-  { icon: Plane, label: 'Destinations', href: '#' },
+  { icon: Plane, label: 'Destinations', href: '/destinations' },
   { icon: Info, label: 'About', href: '#about' },
   { icon: MessageCircle, label: 'Contact', href: '#contact' },
 ];

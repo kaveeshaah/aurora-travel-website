@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import Footer from '../components/common/Footer';
+// import Footer from '../components/common/Footer';
 import ContactForm from '../components/contact/ContactForm';
 import ContactInfo from '../components/contact/ContactInfo';
 import Map from '../components/contact/Map';
@@ -53,7 +53,7 @@ export default function Contact() {
           </div>
         </div>
       </section>
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 }
