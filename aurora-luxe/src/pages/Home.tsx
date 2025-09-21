@@ -3,6 +3,7 @@
 // import Footer from '../components/common/Footer';
 import HeroSection from '../components/home/HeroSection';
 import FeaturedDestinations from '../components/home/FeaturedDestinations';
+import FeaturedExperiences from '../components/home/FeaturedExperiences';
 // import WhyChooseUs from '../components/home/WhyChooseUs';
 // import Testimonials from '../components/home/Testimonials';
 
@@ -12,6 +13,7 @@ export default function Home() {
       <main className="relative">
         <HeroSection />
         <FeaturedDestinations />
+        <FeaturedExperiences />
         {/* <WhyChooseUs /> */}
         {/* <Testimonials /> */}
       </main>
