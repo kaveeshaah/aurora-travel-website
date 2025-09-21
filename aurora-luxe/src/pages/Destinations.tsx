@@ -1,7 +1,6 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import Header from '../components/common/Header';
 import Footer from '../components/common/Footer';
 import DestinationGrid from '../components/destinations/DestinationGrid';
 import FilterBar from '../components/destinations/FilterBar';
@@ -115,7 +114,6 @@ export default function Destinations() {
 
   return (
     <div className="min-h-screen bg-white">
-      <Header />
       <section className="py-16 px-4 sm:px-6 lg:px-8 bg-white">
         <div className="max-w-7xl mx-auto">
         <div className={`text-center mb-16 transition-all duration-1000 ${

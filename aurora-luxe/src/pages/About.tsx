@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { Award, Users, Globe, Star, LucideIcon } from 'lucide-react';
+import Footer from '../components/common/Footer';
 
 interface Stat {
   icon: LucideIcon;
@@ -144,6 +145,7 @@ export default function About() {
           </div>
         </div>
       </section>
+      <Footer />
     </div>
   );
 }

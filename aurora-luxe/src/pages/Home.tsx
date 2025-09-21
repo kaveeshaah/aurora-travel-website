@@ -1,6 +1,5 @@
 'use client';
 
-import Header from '../components/common/Header';
 import Footer from '../components/common/Footer';
 import HeroSection from '../components/home/HeroSection';
 import FeaturedDestinations from '../components/home/FeaturedDestinations';
@@ -10,7 +9,6 @@ import Testimonials from '../components/home/Testimonials';
 export default function Home() {
   return (
     <div className="min-h-screen bg-white">
-      <Header />
       <main className="relative">
         <HeroSection />
         <FeaturedDestinations />
