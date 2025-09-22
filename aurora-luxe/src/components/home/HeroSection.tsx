@@ -16,8 +16,8 @@ export default function HeroSection() {
       {/* Background Image */}
       <div className="absolute inset-0 z-0">
         <Image
-          src="https://images.unsplash.com/photo-1530789253388-582c481c54b0?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-          alt="Luxury travel destination"
+          src="https://images.unsplash.com/photo-1497535944603-98de35a7eef9?w=1920&auto=format&fit=crop&q=80&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDR8fHN3aXNzfGVufDB8fDB8fHww"
+          alt="Swiss mountain landscape"
           fill
           className="object-cover opacity-95"
           priority
