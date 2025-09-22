@@ -2,68 +2,107 @@
 'use client';
 
 import Link from 'next/link';
-import {
-  Home,
-  Plane,
-  Info,
-  MessageCircle,
-  Menu
-} from 'lucide-react';
+import { Icon } from '@iconify/react';
 import { useState } from 'react';
+import { usePathname } from 'next/navigation';
 
 const navItems = [
-  { icon: Home, label: 'Home', href: '/' },
-  { icon: Plane, label: 'Destinations', href: '/destinations' },
-  { icon: Info, label: 'About', href: '#about' },
-  { icon: MessageCircle, label: 'Contact', href: '#contact' },
+  { icon: 'mdi:home', label: 'HOME', href: '/' },
+  { icon: 'mdi:airplane', label: 'DESTINATIONS', href: '/destinations' },
+  { icon: 'mdi:information', label: 'ABOUT', href: '/about' },
+  { icon: 'mdi:phone', label: 'CONTACT', href: '/contact' },
 ];
 
 export default function SideNav() {
   const [isOpen, setIsOpen] = useState(false);
+  const pathname = usePathname();
 
   return (
-    <aside
-      className="group fixed left-0 top-0 h-screen w-20 hover:w-60 transition-all duration-300 flex flex-col justify-between items-center bg-white shadow-lg z-50 pt-6"
-    >
-      {/* Top hamburger */}
-      <button
-        onClick={() => setIsOpen(!isOpen)}
-        className="mb-10 p-3 rounded-md border border-gray-100 bg-white hover:bg-gray-50 transition"
-        aria-label="Toggle navigation menu"
+    <>
+      {/* Overlay when sidebar is open */}
+      {isOpen && (
+        <div 
+          className="fixed inset-0 bg-black/50 z-40"
+          onClick={() => setIsOpen(false)}
+        />
+      )}
+      
+      <aside
+        className={`fixed left-0 top-0 h-screen bg-white shadow-lg z-50 py-8 transition-all duration-300 ${
+          isOpen ? 'w-64' : 'w-20'
+        } flex flex-col justify-between items-center`}
       >
-        <Menu className="w-6 h-6 text-black" />
-      </button>
-      {/* Icons and labels */}
-      <nav className="flex flex-col gap-8 w-full items-center">
-        {navItems.map((item) => {
-          const Icon = item.icon;
-          return (
-            <Link
-              href={item.href}
-              key={item.label}
-              className="flex items-center w-16 group-hover:w-full px-4 h-12 rounded-lg bg-gray-50 text-gray-700 hover:bg-black hover:text-white transition-all duration-300"
-              aria-label={item.label}
+        {/* Top hamburger */}
+        <button
+          onClick={() => setIsOpen(!isOpen)}
+          className="mb-8 p-2 cursor-pointer"
+          aria-label="Toggle navigation menu"
+        >
+          <Icon 
+            icon={isOpen ? "mdi:close" : "mdi:menu"} 
+            width={30} 
+            height={30} 
+            className="text-gray-800 transition-all duration-200" 
+          />
+        </button>
+        
+        {/* Icons navigation */}
+        <nav className="flex flex-col gap-10 flex-1 justify-center w-full">
+          {navItems.map((item) => {
+            const isActive = pathname === item.href;
+            return (
+              <Link
+                href={item.href}
+                key={item.label}
+                className={`flex items-center py-3 transition-all duration-200 cursor-pointer ${
+                  isOpen ? 'justify-start px-6' : 'justify-center'
+                } ${
+                  isActive ? 'bg-gray-50' : ''
+                } rounded-lg mx-2 group`}
+                onClick={() => setIsOpen(false)}
+                aria-label={item.label}
+              >
+                <Icon 
+                  icon={item.icon} 
+                  width={28} 
+                  height={28} 
+                  className="text-blue-900 flex-shrink-0 transition-all duration-200 group-hover:scale-110 group-hover:drop-shadow-lg" 
+                />
+                {isOpen && (
+                  <span className="ml-4 text-sm font-bold text-gray-800 whitespace-nowrap font-lato tracking-wide">
+                    {item.label}
+                  </span>
+                )}
+              </Link>
+            );
+          })}
+        </nav>
+        
+        {/* Vertical brand name at bottom */}
+        <div className={`mb-4 flex items-center justify-center ${isOpen ? 'hidden' : ''}`}>
+          <div className="h-32 flex items-center">
+            <span 
+              className="text-xs font-serif text-gray-800 font-bold tracking-wide whitespace-nowrap"
+              style={{ 
+                writingMode: 'vertical-rl', 
+                textOrientation: 'mixed',
+                transform: 'rotate(180deg)'
+              }}
             >
-              <Icon className="w-6 h-6 flex-shrink-0" />
-              <span className="ml-4 text-sm font-bold origin-left scale-0 group-hover:scale-100 transition-transform duration-300 opacity-0 group-hover:opacity-100 whitespace-nowrap">
-                {item.label}
-              </span>
-            </Link>
-          );
-        })}
-      </nav>
-      {/* Vertical brand name at bottom */}
-      <div className="mb-8 group-hover:hidden">
-        <span className="block text-xs font-serif text-black font-bold tracking-wide origin-bottom-left rotate-90 whitespace-nowrap">
-          Aurora Luxe Travels
-        </span>
-      </div>
-      {/* Horizontal brand name when expanded */}
-      <div className="mb-8 hidden group-hover:block">
-        <span className="text-xs font-serif text-black font-bold tracking-wide">
-          Aurora Luxe Travels
-        </span>
-      </div>
-    </aside>
+              Aurora Luxe Travels
+            </span>
+          </div>
+        </div>
+        
+        {/* Horizontal brand name when expanded */}
+        {isOpen && (
+          <div className="mb-4 text-center">
+            <span className="text-sm font-serif text-gray-800 font-bold tracking-wide font-lato">
+              Aurora Luxe Travels
+            </span>
+          </div>
+        )}
+      </aside>
+    </>
   );
 }

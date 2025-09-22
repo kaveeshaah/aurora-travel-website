@@ -16,13 +16,13 @@ export default function HeroSection() {
       {/* Background Image */}
       <div className="absolute inset-0 z-0">
         <Image
-          src="/images/hompage-range.jpg"
-          alt="Mountain landscape at sunset"
+          src="https://images.unsplash.com/photo-1530789253388-582c481c54b0?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+          alt="Luxury travel destination"
           fill
-          className="object-cover opacity-60"
+          className="object-cover opacity-95"
           priority
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-black/10" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/35 via-black/15 to-transparent" />
       </div>
 
       {/* Content */}
@@ -39,16 +39,16 @@ export default function HeroSection() {
             WHERE ELEGANCE 
             MEETS ADVENTURE
           </h1>
-          <p className="text-lg sm:text-xl lg:text-2xl mb-8 text-white max-w-xl leading-relaxed text-left">
+          <p className="text-lg sm:text-xl lg:text-2xl mt-4 mb-8 text-white max-w-xl leading-relaxed text-left font-lato font-normal">
             Tailored luxury journeys to the world&apos;s most exclusive destinations
           </p>
           <br></br>
           <br></br>
           <button
-            className="w-50 h-20 py-3 text-white border-6 border-white rounded-full text-xl font-bold hover:bg-white hover:text-black transition-all duration-300"
+            className="w-50 h-20 py-3 text-white border-6 border-white rounded-full text-xl font-medium hover:bg-white hover:text-black transition-all duration-300"
              aria-label="Explore destinations"
         >
-            Where to?
+            WHERE TO?
           </button>
 
         </div>

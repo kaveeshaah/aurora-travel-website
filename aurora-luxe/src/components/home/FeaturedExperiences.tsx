@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { ChevronLeft, ChevronRight, Play, Pause } from 'lucide-react';
+import Image from 'next/image';
 
 const featuredExperiences = [
   {
@@ -83,13 +84,15 @@ const FeaturedExperiences = () => {
             className="flex transition-transform duration-500 ease-in-out"
             style={{ transform: `translateX(-${currentSlide * 100}%)` }}
           >
-            {featuredExperiences.map((exp, index) => (
+            {featuredExperiences.map((exp) => (
               <div key={exp.id} className="w-full flex-shrink-0 relative">
                 <div className="relative w-full h-[500px] md:h-[600px]">
-                  <img
+                  <Image
                     src={exp.image}
                     alt={exp.title}
-                    className="w-full h-full object-cover"
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                   />
                   {/* Gradient overlay */}
                   <div className="absolute inset-0 bg-gradient-to-r from-black/50 to-transparent"></div>
@@ -103,7 +106,7 @@ const FeaturedExperiences = () => {
                         {exp.location}
                       </p>
                       <p className="text-white/90 mb-6 leading-relaxed">
-                        Aurora Luxe Travels opens the doors to the world's most prestigious resorts and hidden retreats. From private villas on secluded islands to penthouse suites in iconic cities.
+                        Aurora Luxe Travels opens the doors to the world&apos;s most prestigious resorts and hidden retreats. From private villas on secluded islands to penthouse suites in iconic cities.
                       </p>
                       <div className="flex items-center justify-between mb-6">
                         <span className="text-xl font-semibold text-blue-200">{exp.price}</span>
