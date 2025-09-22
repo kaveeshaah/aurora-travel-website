@@ -1,173 +1,133 @@
 import React, { useState, useEffect } from 'react';
-import { ChevronLeft, ChevronRight, Play, Pause } from 'lucide-react';
 import Image from 'next/image';
 
 const featuredExperiences = [
   {
     id: 1,
-    title: "Private Safari in Kenya",
-    location: "Masai Mara, Kenya",
-    image:
-      "https://images.unsplash.com/photo-1516026672322-bc52d61a55d5?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80",
-    price: "From $15,000",
-    duration: "7 Days",
+    title: "Tailored Experiences",
+    image: "https://images.unsplash.com/photo-1580364545822-71c817ec6c3f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80",
+    description: "Every journey is crafted around your preferences — from private tours to hidden gems, ensuring your travel is truly one of a kind.",
   },
   {
     id: 2,
-    title: "Northern Lights in Iceland",
-    location: "Reykjavik, Iceland",
-    image:
-      "https://images.unsplash.com/photo-1531366936337-7c912a4589a7?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80",
-    price: "From $8,500",
-    duration: "5 Days",
+    title: "Exclusive Access",
+    image: "https://plus.unsplash.com/premium_photo-1670267552055-8f33a55c1af0?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80",
+    description: "Stay at the world's most elite resorts and enjoy experiences usually reserved for the few — from private villas to VIP cultural events.",
   },
   {
     id: 3,
-    title: "Private Yacht in French Riviera",
-    location: "Monaco, France",
-    image:
-      "https://images.unsplash.com/photo-1544551763-46a013bb70d5?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80",
-    price: "From $25,000",
-    duration: "10 Days",
+    title: "Luxury Service",
+    image: "https://images.unsplash.com/photo-1544551763-46a013bb70d5?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80",
+    description: "From your first inquiry to the moment you return home, we ensure every detail is handled with precision, comfort, and elegance.",
   },
 ];
 
 const FeaturedExperiences = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
-  const [isPlaying, setIsPlaying] = useState(true);
 
   // Auto-advance slides
   useEffect(() => {
-    if (!isPlaying) return;
-    
     const interval = setInterval(() => {
       setCurrentSlide((prev) => (prev + 1) % featuredExperiences.length);
-    }, 5000); // Change slide every 5 seconds
+    }, 7000); // Change slide every 7 seconds
 
     return () => clearInterval(interval);
-  }, [isPlaying]);
-
-  const nextSlide = () => {
-    setCurrentSlide((prev) => (prev + 1) % featuredExperiences.length);
-  };
-
-  const prevSlide = () => {
-    setCurrentSlide((prev) => (prev - 1 + featuredExperiences.length) % featuredExperiences.length);
-  };
+  }, []);
 
   const goToSlide = (index: number) => {
     setCurrentSlide(index);
   };
 
-  const togglePlayPause = () => {
-    setIsPlaying(!isPlaying);
-  };
-
   return (
-    <section className="w-full flex flex-col items-center justify-center py-12 bg-gray-50">
+    <section className="w-full flex flex-col items-center justify-center py-20 bg-gradient-to-br from-gray-50 to-white">
       {/* Header */}
-      <div className="text-center mb-16">
-        <h2 className="text-4xl font-bold text-gray-800 mb-4">
-        <br></br><br></br>The Aurora Luxe Promise
-       
+      <br />
+      <div className="text-center mb-20">
+        <h2 className="text-3xl font-serif font-bold text-gray-900 mb-6 my-6 tracking-tight">
+          The Aurora Luxe Promise
         </h2>
-        <p className="text-gray-600 max-w-2xl mx-auto">
-          Discover extraordinary experiences crafted for the discerning traveler<br></br><br></br>
+        <p className="text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed font-lato">
+          Discover extraordinary experiences crafted for the discerning traveler
         </p>
+        <br />
       </div>
 
       {/* Slideshow Container */}
-      <div className="relative w-full max-w-6xl mx-auto">
-        <div className="relative overflow-hidden rounded-xl shadow-2xl">
+      <div className="relative w-full max-w-7xl mx-auto px-4">
+        <div className="relative overflow-hidden rounded-3xl shadow-2xl bg-white">
           {/* Slides */}
           <div 
-            className="flex transition-transform duration-500 ease-in-out"
+            className="flex transition-transform duration-700 ease-in-out"
             style={{ transform: `translateX(-${currentSlide * 100}%)` }}
           >
             {featuredExperiences.map((exp) => (
-              <div key={exp.id} className="w-full flex-shrink-0 relative">
-                <div className="relative w-full h-[500px] md:h-[600px]">
-                  <Image
-                    src={exp.image}
-                    alt={exp.title}
-                    fill
-                    className="object-cover"
-                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                  />
-                  {/* Gradient overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-r from-black/50 to-transparent"></div>
-                  
-                  {/* Content overlay */}
-                  <div className="absolute left-8 top-1/2 transform -translate-y-1/2 text-white max-w-md">
-                    <div className="bg-blue-900/95 rounded-lg p-8 shadow-xl backdrop-blur-sm">
-                      <h3 className="text-2xl font-serif font-bold mb-2">{exp.title}</h3>
-                      <p className="text-blue-100 mb-4 flex items-center">
-                        <span className="mr-2">📍</span>
-                        {exp.location}
+              <div key={exp.id} className="w-full flex-shrink-0 relative group">
+                <div className="relative w-full h-[600px] md:h-[650px] flex overflow-hidden">
+                  {/* Text Content Box - Left Side */}
+                  <div className="w-2/5 flex items-center justify-center p-8 relative z-10" 
+                       style={{background: 'linear-gradient(135deg, rgba(15, 23, 42, 0.95) 0%, rgba(30, 41, 59, 0.95) 100%)'}}>
+                    <div className="text-white max-w-sm transform transition-all duration-700 group-hover:scale-105 mb-8">
+                      <h3 className="text-3xl font-serif font-bold mb-6 text-white leading-tight tracking-wide">
+                        {exp.title}
+                      </h3>
+                      <br />
+                      <p className="text-white/90 mb-8 leading-relaxed text-lg font-lato font-light">
+                        {exp.description}
                       </p>
-                      <p className="text-white/90 mb-6 leading-relaxed">
-                        Aurora Luxe Travels opens the doors to the world&apos;s most prestigious resorts and hidden retreats. From private villas on secluded islands to penthouse suites in iconic cities.
-                      </p>
-                      <div className="flex items-center justify-between mb-6">
-                        <span className="text-xl font-semibold text-blue-200">{exp.price}</span>
-                        <span className="text-blue-200">{exp.duration}</span>
-                      </div>
-                      <button className="w-full py-3 border-2 border-white text-white rounded-full bg-transparent font-serif transition-all duration-300 hover:bg-white hover:text-blue-900 hover:shadow-lg">
-                        VIEW EXPERIENCE
+                      <br />
+                      <button className="w-20 py-3 text-white border-2 border-white rounded-full text-lg font-lato font-medium font-bold hover:bg-white hover:text-black transition-all duration-300 cursor-pointer">
+                        VIEW
                       </button>
                     </div>
+                  </div>
+                  
+                  {/* Image - Right Side */}
+                  <div className="w-3/5 relative overflow-hidden">
+                    <Image
+                      src={exp.image}
+                      alt={exp.title}
+                      fill
+                      className="object-cover transition-transform duration-1000 group-hover:scale-110"
+                      sizes="(max-width: 768px) 60vw, (max-width: 1200px) 60vw, 60vw"
+                    />
+                    {/* Subtle overlay for better contrast */}
+                    <div className="absolute inset-0 bg-gradient-to-l from-transparent via-transparent to-black/10"></div>
                   </div>
                 </div>
               </div>
             ))}
           </div>
-
-          {/* Navigation arrows */}
-          <button
-            onClick={prevSlide}
-            className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white/20 hover:bg-white/30 backdrop-blur-sm text-white p-3 rounded-full transition-all duration-300 hover:scale-110"
-            aria-label="Previous slide"
-          >
-            <ChevronLeft size={24} />
-          </button>
-          
-          <button
-            onClick={nextSlide}
-            className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white/20 hover:bg-white/30 backdrop-blur-sm text-white p-3 rounded-full transition-all duration-300 hover:scale-110"
-            aria-label="Next slide"
-          >
-            <ChevronRight size={24} />
-          </button>
-
-          {/* Play/Pause button */}
-          <button
-            onClick={togglePlayPause}
-            className="absolute top-4 right-4 bg-white/20 hover:bg-white/30 backdrop-blur-sm text-white p-2 rounded-full transition-all duration-300"
-            aria-label={isPlaying ? "Pause slideshow" : "Play slideshow"}
-          >
-            {isPlaying ? <Pause size={20} /> : <Play size={20} />}
-          </button>
         </div>
 
         {/* Slide indicators */}
-        <div className="flex justify-center mt-6 gap-3">
+        <div className="flex justify-center mt-16 gap-6">
           {featuredExperiences.map((_, index) => (
             <button
               key={index}
               onClick={() => goToSlide(index)}
-              className={`w-3 h-3 rounded-full transition-all duration-300 ${
+              className={`relative h-1.5 rounded-full transition-all duration-700 ease-out hover:scale-110 ${
                 index === currentSlide 
-                  ? 'bg-blue-900 scale-125' 
-                  : 'bg-gray-400 hover:bg-gray-500'
+                  ? 'w-16 shadow-lg' 
+                  : 'w-4 bg-gray-300 hover:bg-gray-400'
               }`}
+              style={index === currentSlide ? {
+                background: 'linear-gradient(90deg, #0f172a 0%, #1e293b 100%)',
+                boxShadow: '0 4px 15px rgba(15, 23, 42, 0.4)'
+              } : {}}
               aria-label={`Go to slide ${index + 1}`}
-            />
+            >
+              {/* Active indicator glow effect */}
+              {index === currentSlide && (
+                <div className="absolute inset-0 rounded-full animate-pulse opacity-50" 
+                     style={{background: 'linear-gradient(90deg, #0f172a 0%, #1e293b 100%)'}}></div>
+              )}
+            </button>
           ))}
         </div>
 
         {/* Slide counter */}
-        <div className="text-center mt-4 text-gray-600">
-          <span className="text-sm">
+        <div className="text-center mt-6 text-gray-500">
+          <span className="text-sm font-medium tracking-wider">
             {currentSlide + 1} / {featuredExperiences.length}
           </span>
         </div>

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Playfair_Display, Inter, Lato } from "next/font/google";
 import "./globals.css";
 import SideNav from "@/components/common/SideNav";
+import Footer from "@/components/common/Footer";
 
 const playfair = Playfair_Display({
   variable: "--font-playfair",
@@ -39,9 +40,12 @@ export default function RootLayout({
         suppressHydrationWarning
       >
         <SideNav />
-        <main className="min-h-screen">
-          {children}
-        </main>
+        <div className="ml-20">
+          <main className="min-h-screen">
+            {children}
+          </main>
+        </div>
+        <Footer />
       </body>
     </html>
   );

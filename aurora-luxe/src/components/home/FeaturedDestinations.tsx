@@ -13,7 +13,7 @@ const featuredDestinations = [
 const FeaturedDestinations = () => (
   <section className="w-full flex flex-col items-center justify-center py-8 pl-36"><br></br>
   <br></br>
-    <h2 className="font-serif text-4xl sm:text-3xl lg:text-4xl font-medium mb-6 leading-tight text-center text-black self-start">Featured Destinations</h2><br></br><br></br>
+    <h2 className="font-serif text-4xl sm:text-3xl lg:text-4xl font-medium mb-12 mt-8 leading-tight text-center text-black self-start mx-8">Featured Destinations</h2><br></br><br></br>
     <br></br>
     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-y-16 gap-x-20 max-w-7xl w-full justify-center items-center">
       {featuredDestinations.map(dest => (
