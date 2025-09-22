@@ -3,9 +3,11 @@
 
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
+import { useNavigation } from '../common/NavigationProvider';
 
 export default function HeroSection() {
   const [isVisible, setIsVisible] = useState(false);
+  const { navigate } = useNavigation();
 
   useEffect(() => {
     setIsVisible(true);
@@ -45,6 +47,7 @@ export default function HeroSection() {
           <br></br>
           <br></br>
           <button
+            onClick={() => navigate('/destinations')}
             className="w-50 h-20 py-3 text-white border-6 border-white rounded-full text-xl font-medium hover:bg-white hover:text-black transition-all duration-300"
              aria-label="Explore destinations"
         >

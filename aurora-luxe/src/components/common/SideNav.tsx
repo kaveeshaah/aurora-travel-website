@@ -1,10 +1,10 @@
 // src/components/SideNav.tsx
 'use client';
 
-import Link from 'next/link';
 import { Icon } from '@iconify/react';
 import { useState } from 'react';
 import { usePathname } from 'next/navigation';
+import { useNavigation } from './NavigationProvider';
 
 const navItems = [
   { icon: 'mdi:home', label: 'HOME', href: '/' },
@@ -16,6 +16,7 @@ const navItems = [
 export default function SideNav() {
   const [isOpen, setIsOpen] = useState(false);
   const pathname = usePathname();
+  const { navigate } = useNavigation();
 
   return (
     <>
@@ -51,15 +52,17 @@ export default function SideNav() {
           {navItems.map((item) => {
             const isActive = pathname === item.href;
             return (
-              <Link
-                href={item.href}
+              <button
+                onClick={() => {
+                  navigate(item.href);
+                  setIsOpen(false);
+                }}
                 key={item.label}
-                className={`flex items-center py-3 transition-all duration-200 cursor-pointer ${
+                className={`flex items-center py-3 transition-all duration-200 cursor-pointer w-full ${
                   isOpen ? 'justify-start px-6' : 'justify-center'
                 } ${
                   isActive ? 'bg-gray-50' : ''
                 } rounded-lg mx-2 group`}
-                onClick={() => setIsOpen(false)}
                 aria-label={item.label}
               >
                 <Icon 
@@ -73,7 +76,7 @@ export default function SideNav() {
                     {item.label}
                   </span>
                 )}
-              </Link>
+              </button>
             );
           })}
         </nav>
