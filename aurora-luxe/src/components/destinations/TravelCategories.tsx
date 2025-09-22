@@ -11,7 +11,7 @@ const categories = [
     destinations: [
       {
         name: 'MALDIVES',
-        image: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&auto=format&fit=crop&q=80',
+        image: 'https://images.unsplash.com/photo-1586495985096-787fb4a54ac0?w=600&auto=format&fit=crop&q=80',
         description: 'Crystal clear waters and luxury overwater villas'
       }
     ]
@@ -33,7 +33,7 @@ const categories = [
     destinations: [
       {
         name: 'SCOTLAND',
-        image: 'https://images.unsplash.com/photo-1551698618-1dfe5d97d256?w=600&auto=format&fit=crop&q=80',
+        image: 'https://plus.unsplash.com/premium_photo-1690576837220-8be94b699fc4?w=600&auto=format&fit=crop&q=80',
         description: 'Dramatic highlands and historic castles'
       }
     ]
@@ -49,24 +49,16 @@ export default function TravelCategories() {
     navigate('/destinations');
   };
 
-  const nextCategory = () => {
-    setActiveCategory((prev) => (prev + 1) % categories.length);
-  };
-
-  const prevCategory = () => {
-    setActiveCategory((prev) => (prev - 1 + categories.length) % categories.length);
-  };
-
   return (
-    <section className="py-16 px-4 bg-white">
-      <div className="max-w-7xl mx-auto">
+    <section className="py-16 px-4 bg-white min-h-screen flex flex-col justify-center">
+      <div className="w-full">
         {/* Category Headers */}
-        <div className="flex justify-center mb-12 space-x-8 md:space-x-16">
+        <div className="flex justify-center mb-20 space-x-16 md:space-x-28 lg:space-x-32 py-8">
           {categories.map((category, index) => (
             <button
               key={category.id}
               onClick={() => setActiveCategory(index)}
-              className={`text-lg md:text-xl font-semibold transition-all duration-300 ${
+              className={`text-xl md:text-2xl lg:text-3xl font-semibold transition-all duration-300 px-6 py-3 font-lato ${
                 activeCategory === index
                   ? 'text-blue-600 border-b-2 border-blue-600 pb-2'
                   : 'text-gray-600 hover:text-blue-500'
@@ -78,83 +70,78 @@ export default function TravelCategories() {
         </div>
 
         {/* Destination Cards Container */}
-        <div className="relative">
-          <div className="flex justify-center items-center">
-            {/* Previous Button */}
-            <button
-              onClick={prevCategory}
-              className="absolute left-0 z-10 w-12 h-12 bg-black/70 hover:bg-black/90 rounded-full flex items-center justify-center text-white transition-all duration-300"
-              aria-label="Previous category"
-            >
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-                <path d="M15 18L9 12L15 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-              </svg>
-            </button>
-
-            {/* Active Category Cards */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-16">
-              {categories.map((category, categoryIndex) => 
-                category.destinations.map((destination, destIndex) => (
-                  <div
-                    key={`${category.id}-${destIndex}`}
-                    className={`relative group cursor-pointer transform transition-all duration-500 ${
-                      categoryIndex === activeCategory
-                        ? 'opacity-100 scale-100'
-                        : 'opacity-50 scale-95'
-                    }`}
-                  >
-                    <div className="relative h-80 rounded-lg overflow-hidden shadow-lg">
-                      <Image
-                        src={destination.image}
-                        alt={destination.name}
-                        fill
-                        className="object-cover group-hover:scale-110 transition-transform duration-500"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
-                      
-                      {/* Content Overlay */}
-                      <div className="absolute inset-0 flex flex-col justify-end p-6 text-white">
-                        <h3 className="text-2xl md:text-3xl font-bold font-serif mb-4 tracking-wide">
-                          {destination.name}
+        <div className="w-full flex justify-center">
+          <div className="flex justify-center items-center gap-6">
+            {/* Render cards in specific order: left, center (active), right */}
+            {[
+              // Left card (previous card or last if active is first)
+              categories[(activeCategory - 1 + categories.length) % categories.length],
+              // Center card (active)
+              categories[activeCategory],
+              // Right card (next card or first if active is last)
+              categories[(activeCategory + 1) % categories.length]
+            ].map((category) => {
+              const originalIndex = categories.findIndex(cat => cat.id === category.id);
+              const isActive = originalIndex === activeCategory;
+              
+              return (
+                <div
+                  key={category.id}
+                  className={`relative group cursor-pointer transition-all duration-1000 ease-in-out transform-gpu ${
+                    isActive
+                      ? 'scale-100 z-20'
+                      : 'scale-85 opacity-80'
+                  }`}
+                  style={{
+                    transformOrigin: 'center center',
+                    willChange: 'transform, opacity'
+                  }}
+                  onClick={() => setActiveCategory(originalIndex)}
+                >
+                  <div className={`relative overflow-hidden shadow-xl transition-all duration-1000 ease-in-out ${
+                    isActive ? 'h-[450px] w-[350px]' : 'h-[380px] w-[290px]'
+                  }`}>
+                    <Image
+                      src={category.destinations[0].image}
+                      alt={category.destinations[0].name}
+                      fill
+                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                      className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+                    
+                    {/* Destination Name - Top Center */}
+                    <div className="absolute top-0 left-0 right-0 pt-6 text-white">
+                      <div className="text-center">
+                        <br />
+                        <h3 className={`font-bold font-serif tracking-wide transition-all duration-800 ease-in-out ${
+                          isActive ? 'text-3xl' : 'text-xl'
+                        }`}>
+                          {category.destinations[0].name}
                         </h3>
-                        
-                        <button
-                          onClick={() => handleDiscoverMore()}
-                          className="self-start px-6 py-2 border-2 border-white rounded-full text-sm font-medium hover:bg-white hover:text-black transition-all duration-300"
-                        >
-                          Discover More
-                        </button>
+                      </div>
+                    </div>
+
+                    {/* Button - Bottom Center */}
+                    <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
+                      <div className="text-center h-12 flex justify-center items-start">
+                        {isActive && (
+                          <button
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              handleDiscoverMore();
+                            }}
+                            className="px-8 py-3 text-white border-2 border-white rounded-full text-sm font-medium hover:bg-white hover:text-black transition-all duration-300"
+                          >
+                            DISCOVER MORE
+                          </button>
+                        )}
                       </div>
                     </div>
                   </div>
-                ))
-              )}
-            </div>
-
-            {/* Next Button */}
-            <button
-              onClick={nextCategory}
-              className="absolute right-0 z-10 w-12 h-12 bg-black/70 hover:bg-black/90 rounded-full flex items-center justify-center text-white transition-all duration-300"
-              aria-label="Next category"
-            >
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-                <path d="M9 18L15 12L9 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-              </svg>
-            </button>
-          </div>
-
-          {/* Category Indicators */}
-          <div className="flex justify-center mt-8 space-x-2">
-            {categories.map((_, index) => (
-              <button
-                key={index}
-                onClick={() => setActiveCategory(index)}
-                className={`w-3 h-3 rounded-full transition-all duration-300 ${
-                  activeCategory === index ? 'bg-blue-600' : 'bg-gray-300'
-                }`}
-                aria-label={`Go to category ${index + 1}`}
-              />
-            ))}
+                </div>
+              );
+            })}
           </div>
         </div>
       </div>
