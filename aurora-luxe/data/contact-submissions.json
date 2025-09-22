@@ -1,0 +1,16 @@
+[
+  {
+    "id": "1758574060910",
+    "name": "Test User",
+    "email": "test@example.com",
+    "phone": "",
+    "destinationInterest": "europe",
+    "subject": "Test Inquiry",
+    "message": "This is a test message",
+    "preferredContact": "email",
+    "createdAt": "2025-09-22T20:47:40.910Z",
+    "status": "new",
+    "ipAddress": "unknown",
+    "userAgent": "curl/8.11.0"
+  }
+]
