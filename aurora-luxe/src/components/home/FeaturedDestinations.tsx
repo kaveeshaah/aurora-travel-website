@@ -1,57 +1,102 @@
 // src/components/home/FeaturedDestinations.tsx
+'use client';
 
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
+import { ArrowRight } from 'lucide-react';
 
 const featuredDestinations = [
-  { id: 1, name: 'Maldives', image: 'https://images.unsplash.com/photo-1547528114-f4daa226e256?q=80&w=387&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D' },
-  { id: 2, name: 'Netherlands', image: 'https://images.unsplash.com/photo-1609875103184-cba8296a5220?q=80&w=269&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'},
-     { id: 3, name: 'Bali', image: '/images/bali.jpg' }
- 
+  { id: 1, name: 'Maldives', image: 'https://images.unsplash.com/photo-1547528114-f4daa226e256?w=600&auto=format&fit=crop&q=90&ixlib=rb-4.1.0' },
+  { id: 2, name: 'Netherlands', image: 'https://images.unsplash.com/photo-1609875103184-cba8296a5220?w=600&auto=format&fit=crop&q=90&ixlib=rb-4.1.0'},
+  { id: 3, name: 'Bali', image: 'https://images.unsplash.com/photo-1573790387438-4da905039392?w=600&auto=format&fit=crop&q=90&ixlib=rb-4.1.0' }
 ];
 
-const FeaturedDestinations = () => (
-  <section className="w-full flex flex-col items-center justify-center py-8 pl-36"><br></br>
-  <br></br>
-    <h2 className="font-serif text-4xl sm:text-3xl lg:text-4xl font-medium mb-12 mt-8 leading-tight text-center text-black self-start mx-8">Featured Destinations</h2><br></br><br></br>
-    <br></br>
-    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-y-16 gap-x-20 max-w-7xl w-full justify-center items-center">
-      {featuredDestinations.map(dest => (
-        <div
-          key={dest.id}
-          className="relative rounded-3xl overflow-hidden shadow-lg flex items-center justify-center aspect-[9/16] bg-white"
-        >
-          <Image
-            src={dest.image}
-            alt={dest.name}
-            fill
-            className="object-cover"
-            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-          />
-          <div className="absolute inset-0 flex flex-col items-center justify-center">
-            <span className="font-serif text-4xl sm:text-3xl lg:text-4xl font-medium leading-tight text-center text-white drop-shadow-lg mb-16 uppercase">
-              {dest.name}
-            </span>
-            <br></br>
-            <br></br>
-            <br></br>
-            <br></br>
-           
-           
-            <button
-              className="w-50 py-3 text-white border-3 border-white rounded-full text-lg font-lato font-medium font-bold hover:bg-white hover:text-black transition-all duration-300 cursor-pointer"
-              aria-label={`Explore ${dest.name}`}
-            >
-              EXPLORE
-            </button>
+const FeaturedDestinations = () => {
+  const [isVisible, setIsVisible] = useState<boolean>(false);
+
+  useEffect(() => {
+    setIsVisible(true);
+  }, []);
+
+  return (
+    <section className="relative min-h-screen flex items-center justify-center py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-slate-50 via-amber-50 to-slate-100">
+      <div className="relative z-10 max-w-7xl mx-auto w-full text-center">
+        <div className={`transition-all duration-1000 ${
+          isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'
+        }`}>
+          {/* Section Header */}
+          <div className="mb-16">
+            <div className="flex items-center justify-center mb-8">
+              <div className="h-px bg-gradient-to-r from-transparent via-amber-400 to-transparent w-48"></div>
+            </div>
+            <br />
+            <h2 className="font-serif text-3xl lg:text-4xl text-slate-800 mb-6 tracking-tight">
+              Featured Destinations
+            </h2>
+            <br />
+            <p className="text-lg lg:text-xl text-slate-600 font-lato">
+              Discover our handpicked destinations that promise unforgettable experiences
+            </p>
+            <br />
+          </div>
+
+          {/* Destinations Grid */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-12">
+            {featuredDestinations.map((dest, index) => (
+              <div
+                key={dest.id}
+                className={`group cursor-pointer transition-all duration-1000 ease-out ${
+                  isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'
+                }`}
+                style={{ transitionDelay: `${800 + index * 200}ms` }}
+              >
+                <div className="relative rounded-3xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-500 ease-out transform hover:-translate-y-3 aspect-[9/16] bg-slate-800 will-change-transform">
+                  <Image
+                    src={dest.image}
+                    alt={dest.name}
+                    fill
+                    className="object-cover transition-transform duration-700 ease-out group-hover:scale-105 will-change-transform"
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                    quality={95}
+                    priority={index === 0}
+                  />
+                  
+                  {/* Lighter Gradient Overlay for better image clarity */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                  
+                  {/* Content */}
+                  <div className="absolute inset-0 flex flex-col items-center justify-center p-8">
+                    <h3 className="font-serif text-3xl lg:text-4xl font-bold text-white mb-8 uppercase tracking-wide drop-shadow-2xl transition-transform duration-500 group-hover:scale-105">
+                      {dest.name}
+                    </h3>
+                    <br />
+
+                    
+                    <div className="opacity-0 group-hover:opacity-100 transition-all duration-700 ease-out transform translate-y-8 group-hover:translate-y-0">
+                      <button className="group/btn relative overflow-hidden bg-white text-slate-800 px-8 py-4 rounded-2xl font-medium text-base tracking-wide hover:shadow-xl transition-all duration-300 ease-out hover:scale-110 will-change-transform min-w-[160px] flex items-center justify-center space-x-2">
+                        <span className="relative z-10 transition-transform duration-300 group-hover/btn:translate-x-1">Explore</span>
+                        <ArrowRight className="w-4 h-4 relative z-10 transition-all duration-300 group-hover/btn:translate-x-1 group-hover/btn:scale-110" />
+                        
+                        {/* Animated background effect */}
+                        <div className="absolute inset-0 bg-gradient-to-r from-slate-800 to-slate-700 transform translate-x-full group-hover/btn:translate-x-0 transition-transform duration-300 ease-out"></div>
+                        
+                        {/* Text color change overlay */}
+                        <div className="absolute inset-0 bg-white transform translate-x-full group-hover/btn:translate-x-0 transition-transform duration-300 ease-out opacity-0 group-hover/btn:opacity-100"></div>
+                        <span className="absolute inset-0 flex items-center justify-center space-x-2 text-white opacity-0 group-hover/btn:opacity-100 transition-opacity duration-300 ease-out">
+                          <span className="transition-transform duration-300 group-hover/btn:translate-x-1">Explore</span>
+                          <ArrowRight className="w-4 h-4 transition-all duration-300 group-hover/btn:translate-x-1 group-hover/btn:scale-110" />
+                        </span>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
-      ))}
-    </div>
-  </section>
-  
-);
-
-
+      </div>
+    </section>
+  );
+};
 
 export default FeaturedDestinations;

@@ -5,19 +5,19 @@ const featuredExperiences = [
   {
     id: 1,
     title: "Tailored Experiences",
-    image: "https://images.unsplash.com/photo-1580364545822-71c817ec6c3f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80",
+    image: "https://images.unsplash.com/photo-1488646953014-85cb44e25828?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80",
     description: "Every journey is crafted around your preferences — from private tours to hidden gems, ensuring your travel is truly one of a kind.",
   },
   {
     id: 2,
     title: "Exclusive Access",
-    image: "https://plus.unsplash.com/premium_photo-1670267552055-8f33a55c1af0?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80",
+    image: "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80",
     description: "Stay at the world's most elite resorts and enjoy experiences usually reserved for the few — from private villas to VIP cultural events.",
   },
   {
     id: 3,
     title: "Luxury Service",
-    image: "https://images.unsplash.com/photo-1544551763-46a013bb70d5?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80",
+    image: "https://images.unsplash.com/photo-1571896349842-33c89424de2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80",
     description: "From your first inquiry to the moment you return home, we ensure every detail is handled with precision, comfort, and elegance.",
   },
 ];
@@ -42,11 +42,17 @@ const FeaturedExperiences = () => {
     <section className="w-full flex flex-col items-center justify-center py-20 bg-gradient-to-br from-gray-50 to-white">
       {/* Header */}
       <br />
-      <div className="text-center mb-20">
-        <h2 className="text-3xl font-serif font-bold text-gray-900 mb-6 my-6 tracking-tight">
-          The Aurora Luxe Promise
+      <br />
+      <div className="text-center mb-16">
+        <div className="flex items-center justify-center mb-8">
+          <div className="h-px bg-gradient-to-r from-transparent via-amber-400 to-transparent w-48"></div>
+        </div>
+        <br />
+        <h2 className="font-serif text-3xl lg:text-4xl text-slate-800 mb-6 tracking-tight">
+          Featured Experiences
         </h2>
-        <p className="text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed font-lato">
+        <br />
+        <p className="text-lg lg:text-xl text-slate-600 font-lato">
           Discover extraordinary experiences crafted for the discerning traveler
         </p>
         <br />

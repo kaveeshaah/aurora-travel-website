@@ -5,9 +5,14 @@ const TrendingDestination = () => {
   return (
     <section className="w-full flex flex-col items-center justify-center py-20 mb-16 bg-gradient-to-br from-gray-50 to-white">
       {/* Header */}
+      <br />
+      <br />
       <div className="text-center mb-20">
+        <div className="flex items-center justify-center mb-8">
+          <div className="h-px bg-gradient-to-r from-transparent via-amber-400 to-transparent w-48"></div>
+        </div>
         <br />
-        <h2 className="text-3xl font-serif font-bold text-gray-900 mb-6 tracking-tight">
+        <h2 className="font-serif text-3xl lg:text-4xl text-slate-800 mb-6 tracking-tight">
           Trending Destination
         </h2>
         <br />
