@@ -1,15 +1,13 @@
 import express, { Request, Response } from 'express';
 import { body, validationResult } from 'express-validator';
 import { v4 as uuidv4 } from 'uuid';
-import { 
-  Contact, 
-  ContactFormData, 
-  ContactUpdateData, 
-  ApiResponse, 
+import {
+  Contact,
+  ContactFormData,
+  ContactUpdateData,
+  ApiResponse,
   ValidationError as ValidationErrorType,
-  AppError,
-  NotFoundError,
-  ConflictError
+  NotFoundError
 } from '../types';
 
 const router = express.Router();
@@ -29,7 +27,7 @@ const contactValidation = [
     .withMessage('Please provide a valid email address'),
   body('phone')
     .optional()
-    .isMobilePhone()
+    .isMobilePhone('any')
     .withMessage('Please provide a valid phone number'),
   body('subject')
     .trim()
@@ -51,7 +49,7 @@ router.post('/', contactValidation, async (req: Request, res: Response) => {
     // Check validation errors
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
-      const validationErrors: ValidationErrorType[] = errors.array().map(error => ({
+      const validationErrors = errors.array().map(error => ({
         field: error.type === 'field' ? error.path : 'unknown',
         message: error.msg,
         value: error.type === 'field' ? error.value : undefined
@@ -71,7 +69,7 @@ router.post('/', contactValidation, async (req: Request, res: Response) => {
       id: uuidv4(),
       name,
       email,
-      phone: phone || undefined,
+      ...(phone && { phone }),
       subject,
       message,
       preferredContact: preferredContact || 'email',
@@ -100,7 +98,7 @@ router.post('/', contactValidation, async (req: Request, res: Response) => {
       }
     };
 
-    res.status(201).json(response);
+    return res.status(201).json(response);
 
   } catch (error) {
     console.error('Contact form error:', error);
@@ -108,26 +106,26 @@ router.post('/', contactValidation, async (req: Request, res: Response) => {
       success: false,
       message: 'Failed to submit contact form. Please try again later.'
     };
-    res.status(500).json(response);
+    return res.status(500).json(response);
   }
 });
 
 // GET /api/contact - Get all contacts (admin only - add authentication in production)
-router.get('/', (req: Request, res: Response) => {
+router.get('/', (_req: Request, res: Response) => {
   try {
     const response: ApiResponse<Contact[]> = {
       success: true,
       data: contacts,
       message: `Retrieved ${contacts.length} contacts`
     };
-    res.json(response);
+    return res.json(response);
   } catch (error) {
     console.error('Get contacts error:', error);
     const response: ApiResponse = {
       success: false,
       message: 'Failed to retrieve contacts'
     };
-    res.status(500).json(response);
+    return res.status(500).json(response);
   }
 });
 
@@ -146,7 +144,7 @@ router.get('/:id', (req: Request, res: Response) => {
       data: contact,
       message: 'Contact retrieved successfully'
     };
-    res.json(response);
+    return res.json(response);
   } catch (error) {
     if (error instanceof NotFoundError) {
       const response: ApiResponse = {
@@ -161,7 +159,7 @@ router.get('/:id', (req: Request, res: Response) => {
       success: false,
       message: 'Failed to retrieve contact'
     };
-    res.status(500).json(response);
+    return res.status(500).json(response);
   }
 });
 
@@ -178,19 +176,20 @@ router.patch('/:id', (req: Request, res: Response) => {
     }
 
     // Update contact
-    contacts[contactIndex] = {
+    const updatedContact: Contact = {
       ...contacts[contactIndex],
-      status: status || contacts[contactIndex].status,
-      notes: notes || contacts[contactIndex].notes,
+      ...(status && { status }),
+      ...(notes !== undefined && { notes }),
       updatedAt: new Date().toISOString()
     };
+    contacts[contactIndex] = updatedContact;
 
     const response: ApiResponse<Contact> = {
       success: true,
       message: 'Contact updated successfully',
-      data: contacts[contactIndex]
+      data: updatedContact
     };
-    res.json(response);
+    return res.json(response);
   } catch (error) {
     if (error instanceof NotFoundError) {
       const response: ApiResponse = {
@@ -205,7 +204,7 @@ router.patch('/:id', (req: Request, res: Response) => {
       success: false,
       message: 'Failed to update contact'
     };
-    res.status(500).json(response);
+    return res.status(500).json(response);
   }
 });
 

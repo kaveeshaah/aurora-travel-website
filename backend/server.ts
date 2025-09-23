@@ -15,17 +15,17 @@ import newsletterRoutes from './routes/newsletter';
 dotenv.config();
 
 const app = express();
-const PORT = process.env.PORT || 5000;
+const PORT = process.env['PORT'] || 5000;
 
 // Server configuration
 const config: ServerConfig = {
   port: Number(PORT),
-  nodeEnv: process.env.NODE_ENV || 'development',
-  frontendUrl: process.env.FRONTEND_URL || 'http://localhost:3000',
-  smtpHost: process.env.SMTP_HOST,
-  smtpPort: process.env.SMTP_PORT ? Number(process.env.SMTP_PORT) : undefined,
-  smtpUser: process.env.SMTP_USER,
-  smtpPass: process.env.SMTP_PASS,
+  nodeEnv: process.env['NODE_ENV'] || 'development',
+  frontendUrl: process.env['FRONTEND_URL'] || 'http://localhost:3000',
+  ...(process.env['SMTP_HOST'] && { smtpHost: process.env['SMTP_HOST'] }),
+  ...(process.env['SMTP_PORT'] && { smtpPort: Number(process.env['SMTP_PORT']) }),
+  ...(process.env['SMTP_USER'] && { smtpUser: process.env['SMTP_USER'] }),
+  ...(process.env['SMTP_PASS'] && { smtpPass: process.env['SMTP_PASS'] }),
 };
 
 // Security middleware
@@ -53,13 +53,13 @@ app.use(express.urlencoded({ extended: true }));
 app.use(morgan('combined'));
 
 // Health check endpoint
-app.get('/health', (req: Request, res: Response) => {
+app.get('/health', (_req: Request, res: Response) => {
   const healthResponse: HealthCheckResponse = {
     status: 'OK',
     timestamp: new Date().toISOString(),
     uptime: process.uptime()
   };
-  
+
   res.status(200).json(healthResponse);
 });
 
@@ -69,7 +69,7 @@ app.use('/api/booking', bookingRoutes);
 app.use('/api/newsletter', newsletterRoutes);
 
 // 404 handler
-app.use('*', (req: Request, res: Response) => {
+app.use('*', (_req: Request, res: Response) => {
   res.status(404).json({
     success: false,
     message: 'Route not found'
@@ -77,9 +77,9 @@ app.use('*', (req: Request, res: Response) => {
 });
 
 // Global error handler
-app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
+app.use((err: Error, _req: Request, res: Response, _next: NextFunction) => {
   console.error('Error:', err);
-  
+
   if (err instanceof AppError) {
     return res.status(err.statusCode).json({
       success: false,
@@ -87,8 +87,8 @@ app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
       ...(config.nodeEnv === 'development' && { stack: err.stack })
     });
   }
-  
-  res.status(500).json({
+
+  return res.status(500).json({
     success: false,
     message: 'Internal server error',
     ...(config.nodeEnv === 'development' && { stack: err.stack })
