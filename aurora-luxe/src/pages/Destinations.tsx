@@ -3,6 +3,7 @@
 // import Footer from '../components/common/Footer';
 import DestinationHeroSection from '../components/destinations/DestinationHeroSection'
 import TravelCategories from '../components/destinations/TravelCategories'
+import FeaturedLuxuryExperience from '../components/destinations/FeaturedLuxuryExperience'
 
 export default function Destinations() {
   return (
@@ -10,6 +11,7 @@ export default function Destinations() {
       <main className="relative">
         <DestinationHeroSection />
         <TravelCategories />
+        <FeaturedLuxuryExperience />
         
         {/* <WhyChooseUs /> */}
         {/* <Testimonials /> */}

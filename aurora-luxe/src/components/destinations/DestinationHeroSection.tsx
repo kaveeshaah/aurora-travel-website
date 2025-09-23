@@ -31,6 +31,15 @@ export default function HeroSection() {
     setIsVisible(true);
   }, []);
 
+  // Auto-slide functionality
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setActiveImageIndex((prevIndex) => (prevIndex + 1) % heroImages.length);
+    }, 5000); // Change slide every 5 seconds
+
+    return () => clearInterval(interval); // Cleanup interval on component unmount
+  }, [heroImages.length]);
+
   return (
     <section className="relative min-h-screen flex items-center bg-black/80">
       {/* Background Image */}

@@ -29,7 +29,7 @@ const Footer = () => {
         <div>
           <h2 className="text-3xl font-medium mb-6 font-serif"><br></br>Aurora Luxe Travels</h2><br></br><br></br>
           <p className="text-gray-300 text-lg leading-relaxed max-w-2xl mx-auto font-lato mb-2">
-            Aurora Luxe Travels curates bespoke journeys to the world's most exclusive destinations. With a passion for elegance and detail, we craft seamless luxury escapes designed for the discerning traveler.
+            Aurora Luxe Travels curates bespoke journeys to the worlds most exclusive destinations. With a passion for elegance and detail, we craft seamless luxury escapes designed for the discerning traveler.
           </p>
         </div>
 
@@ -104,9 +104,11 @@ const Footer = () => {
 
         {/* Copyright */}
         <div className="pt-8 border-t border-gray-600 w-full">
+          <br />
           <p className="text-gray-400 text-sm">
             © 2025 Aurora Luxe Travels. All Rights Reserved
           </p>
+          <br />
         </div>
       </div>
     </section>
