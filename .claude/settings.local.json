@@ -1,11 +1,15 @@
 {
   "permissions": {
     "allow": [
-      "Bash(npm run dev:*)",
       "Bash(npm install)",
+      "Bash(npx nodemon:*)",
       "Bash(npm install:*)",
-      "Bash(curl:*)",
-      "Bash(ls -la \"C:\\Users\\ADMIN\\Desktop\\aurora-travel-website\\aurora-luxe\"\" | grep -E \".env \")"
+      "Bash(npm run dev:*)",
+      "Bash(npm run:*)",
+      "Bash(git checkout:*)",
+      "Read(//c/Users/Kaveesha/OneDrive/Pictures/Screenshots/**)",
+      "Bash(git reset:*)",
+      "Bash(git rm:*)"
     ],
     "deny": [],
     "ask": []
