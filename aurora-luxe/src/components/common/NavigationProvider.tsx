@@ -51,16 +51,8 @@ export default function NavigationProvider({ children }: NavigationProviderProps
     }
   }, [pathname, targetPath]);
 
-  // Handle back/forward browser navigation
-  useEffect(() => {
-    const handleStart = () => setIsLoading(true);
-
-    window.addEventListener('popstate', handleStart);
-    
-    return () => {
-      window.removeEventListener('popstate', handleStart);
-    };
-  }, []);
+  // Note: We intentionally avoid forcing a loader on browser back/forward navigation
+  // to prevent the loader from getting stuck when the route doesn't change as expected.
 
   return (
     <NavigationContext.Provider value={{ isLoading, navigate }}>
