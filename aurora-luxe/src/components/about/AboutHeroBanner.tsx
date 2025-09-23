@@ -76,11 +76,15 @@ export default function AboutHeroBanner() {
           
           {/* Our Story Section Indicator */}
           <div className="flex flex-col items-center">
-            <h2 className="text-lg sm:text-xl tracking-widest uppercase mb-6 font-light text-amber-200 font-serif">
-              {heroContent.sectionIndicator}
-            </h2>
+            <a href="/about#our-story" className="hover:text-amber-300 transition-colors">
+              <h2 className="text-lg sm:text-xl tracking-widest uppercase mb-6 font-light text-amber-200 font-serif">
+                {heroContent.sectionIndicator}
+              </h2>
+            </a>
             <br />
-            <ChevronDown className="w-6 h-6 animate-bounce text-amber-200" />
+            <a href="/about#our-story" aria-label="Scroll to Our Story">
+              <ChevronDown className="w-6 h-6 animate-bounce text-amber-200" />
+            </a>
           </div>
         </div>
       </div>
