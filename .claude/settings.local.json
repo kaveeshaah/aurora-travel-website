@@ -10,8 +10,12 @@
       "Read(//c/Users/Kaveesha/OneDrive/Pictures/Screenshots/**)",
       "Bash(git reset:*)",
       "Bash(git rm:*)",
+<<<<<<< HEAD
       "Bash(cat:*)",
       "Bash(npx ts-node:*)",
+=======
+      "Bash(npx tsc:*)",
+>>>>>>> 4385b5c1bf3062246bafb44559b0a5d1e8d0dd51
       "Bash(curl:*)"
     ],
     "deny": [],
