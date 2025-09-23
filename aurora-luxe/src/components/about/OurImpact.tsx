@@ -32,26 +32,35 @@ export default function OurImpact() {
   }, []);
 
   return (
-    <section className="py-16 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-7xl mx-auto">
-        <div className={`mb-16 transition-all duration-1000 delay-700 ${
+    <section className="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-slate-800 to-slate-900">
+      <div className="relative z-10 px-6 max-w-7xl mx-auto w-full">
+        <div className={`transition-all duration-1000 delay-700 ${
           isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
         }`}>
-          <h2 className="font-serif text-4xl font-bold text-gray-900 text-center mb-12">
+          {/* Section divider line */}
+          <div className="flex justify-center mb-16">
+            <div className="w-24 h-px bg-amber-400" />
+          </div>
+          
+          <h2 className="font-serif text-4xl lg:text-6xl text-white text-center mb-20 tracking-wide">
             {impactContent.title}
           </h2>
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
+          <br />
+          <br />
+          
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-16 lg:gap-20">
             {impactContent.stats.map((stat, index) => {
               const IconComponent = stat.icon;
               return (
                 <div key={index} className="text-center group">
-                  <div className="inline-flex items-center justify-center w-20 h-20 bg-blue-100 rounded-full mb-6 group-hover:bg-blue-200 transition-colors duration-300">
-                    <IconComponent className="w-10 h-10 text-blue-600" />
+                  <div className="inline-flex items-center justify-center w-20 h-20 border-2 border-amber-400 rounded-full mb-8 group-hover:bg-amber-400 group-hover:border-amber-500 transition-all duration-300">
+                    <IconComponent className="w-10 h-10 text-amber-400 group-hover:text-slate-900 transition-colors duration-300" />
                   </div>
-                  <div className="font-serif text-4xl font-bold text-gray-900 mb-3">
+                  <div className="font-serif text-4xl lg:text-5xl text-white mb-4">
                     {stat.value}
                   </div>
-                  <div className="text-gray-600 text-lg font-medium">
+                  <br />
+                  <div className="text-amber-200 text-base lg:text-lg font-lato tracking-wider uppercase">
                     {stat.label}
                   </div>
                 </div>

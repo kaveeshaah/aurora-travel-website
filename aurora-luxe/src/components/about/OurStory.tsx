@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import Image from 'next/image';
 
 interface StoryContent {
   title: string;
@@ -24,17 +25,35 @@ export default function OurStory() {
   }, []);
 
   return (
-    <section className="py-16 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-7xl mx-auto">
+    <section className="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-slate-50 to-stone-100">
+      {/* Background Image */}
+      <div className="absolute inset-0 z-0">
+        <Image
+          src="https://images.unsplash.com/photo-1488646953014-85cb44e25828?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D&auto=format&fit=crop&w=2070&q=80"
+          alt="Travel story background"
+          fill
+          className="object-cover opacity-30"
+        />
+        <div className="absolute inset-0 bg-gradient-to-br from-slate-50/70 to-stone-100/70" />
+      </div>
+
+      <div className="relative z-10 text-center px-4 max-w-4xl mx-auto ml-auto mr-16">
         <div className={`transition-all duration-1000 delay-300 ${
-          isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-8'
+          isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
         }`}>
-          <h2 className="font-serif text-3xl font-bold text-gray-900 mb-6 text-center lg:text-left">
+          {/* Section divider line */}
+          <div className="flex justify-center mb-16">
+            <div className="w-24 h-px bg-amber-500" />
+          </div>
+          
+          <h2 className="font-serif text-4xl lg:text-5xl text-slate-800 mb-20 text-center tracking-wide">
             {storyContent.title}
           </h2>
-          <div className="max-w-4xl mx-auto lg:mx-0">
+          <br />
+          
+          <div className="space-y-12 max-w-3xl mx-auto">
             {storyContent.paragraphs.map((paragraph, index) => (
-              <p key={index} className="text-gray-700 leading-relaxed mb-6 text-lg">
+              <p key={index} className="text-slate-600 leading-relaxed text-lg lg:text-xl font-lato text-center">
                 {paragraph}
               </p>
             ))}
