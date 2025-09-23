@@ -9,7 +9,9 @@
       "Bash(git checkout:*)",
       "Read(//c/Users/Kaveesha/OneDrive/Pictures/Screenshots/**)",
       "Bash(git reset:*)",
-      "Bash(git rm:*)"
+      "Bash(git rm:*)",
+      "Bash(npx tsc:*)",
+      "Bash(curl:*)"
     ],
     "deny": [],
     "ask": []
