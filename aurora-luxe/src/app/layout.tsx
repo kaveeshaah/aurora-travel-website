@@ -1,9 +1,8 @@
 import type { Metadata } from "next";
 import { Playfair_Display, Inter, Lato } from "next/font/google";
 import "./globals.css";
-import SideNav from "@/components/common/SideNav";
-import Footer from "@/components/common/Footer";
-import NavigationProvider from "@/components/common/NavigationProvider";
+import ClientLayout from "@/components/common/ClientLayout";
+import ResourcePreloader from "@/components/common/ResourcePreloader";
 
 const playfair = Playfair_Display({
   variable: "--font-playfair",
@@ -40,15 +39,10 @@ export default function RootLayout({
         className={`${playfair.variable} ${inter.variable} ${lato.variable} font-sans antialiased`}
         suppressHydrationWarning
       >
-        <NavigationProvider>
-          <SideNav />
-          <div className="ml-20">
-            <main className="min-h-screen">
-              {children}
-            </main>
-          </div>
-          <Footer />
-        </NavigationProvider>
+        <ResourcePreloader />
+        <ClientLayout>
+          {children}
+        </ClientLayout>
       </body>
     </html>
   );

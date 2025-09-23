@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import Link from 'next/link';
-import { Icon } from '@iconify/react';
+import LightweightIcon from './LightweightIcon';
 
 const Footer = () => {
   const [email, setEmail] = useState('');
@@ -36,15 +36,15 @@ const Footer = () => {
         {/* Contact Information */}
         <div className="flex flex-col md:flex-row justify-center items-center gap-12">
           <div className="flex flex-col items-center gap-2">
-            <Icon icon="mdi:phone" width={24} height={24} className="text-white" />
+            <LightweightIcon name="mdi:phone" size={24} className="text-white" />
             <span className="text-gray-300 text-sm">+94 771 469 4101</span>
           </div>
           <div className="flex flex-col items-center gap-2">
-            <Icon icon="mdi:email" width={24} height={24} className="text-white" />
+            <LightweightIcon name="mdi:email" size={24} className="text-white" />
             <span className="text-gray-300 text-sm">auroraluxe@gmail.com</span>
           </div>
           <div className="flex flex-col items-center gap-2">
-            <Icon icon="mdi:map-marker" width={24} height={24} className="text-white" />
+            <LightweightIcon name="mdi:map-marker" size={24} className="text-white" />
             <span className="text-gray-300 text-sm text-center">
               No. 68A Senanayake Crescent,<br />Colombo 07, Sri Lanka
             </span>
@@ -71,7 +71,7 @@ const Footer = () => {
               aria-label="Send"
               className="w-12 h-12 flex items-center justify-center text-white border-2 border-white rounded-full hover:bg-white hover:text-slate-800 transition-all duration-300 cursor-pointer"
             >
-              <Icon icon="mdi:send" width={20} height={20} />
+              <LightweightIcon name="mdi:send" size={20} />
             </button>
           </form>
         </div>
@@ -89,16 +89,16 @@ const Footer = () => {
         {/* Social Media Icons */}
         <div className="flex justify-center gap-8">
           <a href="#" className="text-gray-300 hover:text-white transition-colors">
-            <Icon icon="mdi:instagram" width={28} height={28} />
+            <LightweightIcon name="mdi:instagram" size={28} />
           </a>
           <a href="#" className="text-gray-300 hover:text-white transition-colors">
-            <Icon icon="mdi:twitter" width={28} height={28} />
+            <LightweightIcon name="mdi:twitter" size={28} />
           </a>
           <a href="#" className="text-gray-300 hover:text-white transition-colors">
-            <Icon icon="mdi:facebook" width={28} height={28} />
+            <LightweightIcon name="mdi:facebook" size={28} />
           </a>
           <a href="#" className="text-gray-300 hover:text-white transition-colors">
-            <Icon icon="mdi:youtube" width={28} height={28} />
+            <LightweightIcon name="mdi:youtube" size={28} />
           </a>
         </div>
 

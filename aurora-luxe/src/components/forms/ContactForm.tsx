@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import { Icon } from '@iconify/react';
+import LightweightIcon from '../common/LightweightIcon';
 import { collection, addDoc, Timestamp } from 'firebase/firestore';
 import { db } from '@/lib/firebase';
 
@@ -136,14 +136,14 @@ const ContactForm = () => {
         <div className="bg-white rounded-2xl shadow-xl p-8">
           {submitStatus === 'success' && (
             <div className="mb-6 p-4 bg-green-50 border border-green-200 rounded-lg flex items-center gap-3">
-              <Icon icon="mdi:check-circle" className="text-green-600" width={24} height={24} />
+              <LightweightIcon name="mdi:check-circle" size={24} />
               <span className="text-green-800">Thank you! Your inquiry has been submitted successfully.</span>
             </div>
           )}
 
           {submitStatus === 'error' && (
             <div className="mb-6 p-4 bg-red-50 border border-red-200 rounded-lg flex items-center gap-3">
-              <Icon icon="mdi:alert-circle" className="text-red-600" width={24} height={24} />
+              <LightweightIcon name="mdi:alert-circle" size={24} />
               <span className="text-red-800">Something went wrong. Please try again later.</span>
             </div>
           )}
@@ -166,7 +166,7 @@ const ContactForm = () => {
               />
               {errors.name && (
                 <p className="mt-1 text-sm text-red-600 flex items-center gap-1">
-                  <Icon icon="mdi:alert-circle" width={16} height={16} />
+                  <LightweightIcon name="mdi:alert-circle" size={16} />
                   {errors.name}
                 </p>
               )}
@@ -189,7 +189,7 @@ const ContactForm = () => {
               />
               {errors.email && (
                 <p className="mt-1 text-sm text-red-600 flex items-center gap-1">
-                  <Icon icon="mdi:alert-circle" width={16} height={16} />
+                  <LightweightIcon name="mdi:alert-circle" size={16} />
                   {errors.email}
                 </p>
               )}
@@ -216,7 +216,7 @@ const ContactForm = () => {
               </select>
               {errors.destinationInterest && (
                 <p className="mt-1 text-sm text-red-600 flex items-center gap-1">
-                  <Icon icon="mdi:alert-circle" width={16} height={16} />
+                  <LightweightIcon name="mdi:alert-circle" size={16} />
                   {errors.destinationInterest}
                 </p>
               )}
@@ -239,7 +239,7 @@ const ContactForm = () => {
               />
               {errors.message && (
                 <p className="mt-1 text-sm text-red-600 flex items-center gap-1">
-                  <Icon icon="mdi:alert-circle" width={16} height={16} />
+                  <LightweightIcon name="mdi:alert-circle" size={16} />
                   {errors.message}
                 </p>
               )}
@@ -252,12 +252,12 @@ const ContactForm = () => {
             >
               {isSubmitting ? (
                 <>
-                  <Icon icon="mdi:loading" className="animate-spin" width={20} height={20} />
+                  <LightweightIcon name="mdi:loading" size={20} />
                   Submitting...
                 </>
               ) : (
                 <>
-                  <Icon icon="mdi:send" width={20} height={20} />
+                  <LightweightIcon name="mdi:send" size={20} />
                   Send Inquiry
                 </>
               )}

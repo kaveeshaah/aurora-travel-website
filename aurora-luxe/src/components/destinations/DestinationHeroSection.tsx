@@ -3,7 +3,7 @@
 
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
-import { Icon } from '@iconify/react';
+import LightweightIcon from '../common/LightweightIcon';
 
 export default function HeroSection() {
   const [isVisible, setIsVisible] = useState(false);
@@ -95,10 +95,9 @@ export default function HeroSection() {
             }`}
             aria-label={`Switch to ${image.alt}`}
           >
-            <Icon 
-              icon={image.icon} 
-              width={20} 
-              height={20}
+            <LightweightIcon 
+              name={image.icon} 
+              size={20}
             />
           </button>
         ))}

@@ -1,7 +1,7 @@
 // src/components/SideNav.tsx
 'use client';
 
-import { Icon } from '@iconify/react';
+import LightweightIcon from './LightweightIcon';
 import { useState } from 'react';
 import { usePathname } from 'next/navigation';
 import { useNavigation } from './NavigationProvider';
@@ -29,7 +29,7 @@ export default function SideNav() {
       )}
       
       <aside
-        className={`fixed left-0 top-0 h-screen bg-white shadow-lg z-50 py-8 transition-all duration-300 ${
+        className={`fixed left-0 top-0 h-screen bg-slate-800 z-50 py-8 transition-all duration-300 ${
           isOpen ? 'w-64' : 'w-20'
         } flex flex-col justify-between items-center`}
       >
@@ -39,11 +39,10 @@ export default function SideNav() {
           className="mb-8 p-2 cursor-pointer"
           aria-label="Toggle navigation menu"
         >
-          <Icon 
-            icon={isOpen ? "mdi:close" : "mdi:menu"} 
-            width={30} 
-            height={30} 
-            className="text-gray-800 transition-all duration-200" 
+          <LightweightIcon 
+            name={isOpen ? "mdi:close" : "mdi:menu"} 
+            size={30} 
+            className="text-white transition-all duration-200" 
           />
         </button>
         
@@ -61,18 +60,17 @@ export default function SideNav() {
                 className={`flex items-center py-3 transition-all duration-200 cursor-pointer w-full ${
                   isOpen ? 'justify-start px-6' : 'justify-center'
                 } ${
-                  isActive ? 'bg-gray-50' : ''
+                  isActive ? 'bg-slate-700' : 'hover:bg-slate-700'
                 } rounded-lg mx-2 group`}
                 aria-label={item.label}
               >
-                <Icon 
-                  icon={item.icon} 
-                  width={28} 
-                  height={28} 
-                  className="text-blue-900 flex-shrink-0 transition-all duration-200 group-hover:scale-110 group-hover:drop-shadow-lg" 
+                <LightweightIcon 
+                  name={item.icon} 
+                  size={28} 
+                  className="text-white flex-shrink-0 transition-all duration-200 group-hover:text-blue-300" 
                 />
                 {isOpen && (
-                  <span className="ml-4 text-sm font-bold text-gray-800 whitespace-nowrap font-lato tracking-wide">
+                  <span className="ml-4 text-sm font-bold text-white whitespace-nowrap font-lato tracking-wide">
                     {item.label}
                   </span>
                 )}
@@ -85,7 +83,7 @@ export default function SideNav() {
         <div className={`mb-4 flex items-center justify-center ${isOpen ? 'hidden' : ''}`}>
           <div className="h-32 flex items-center">
             <span 
-              className="text-xs font-serif text-gray-800 font-bold tracking-wide whitespace-nowrap"
+              className="text-xs font-serif text-white font-bold tracking-wide whitespace-nowrap"
               style={{ 
                 writingMode: 'vertical-rl', 
                 textOrientation: 'mixed',
@@ -100,7 +98,7 @@ export default function SideNav() {
         {/* Horizontal brand name when expanded */}
         {isOpen && (
           <div className="mb-4 text-center">
-            <span className="text-sm font-serif text-gray-800 font-bold tracking-wide font-lato">
+            <span className="text-sm font-serif text-white font-bold tracking-wide font-lato">
               Aurora Luxe Travels
             </span>
           </div>

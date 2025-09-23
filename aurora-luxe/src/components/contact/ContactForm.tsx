@@ -1,7 +1,7 @@
 'use client';
 
-import { useState } from 'react';
-import { Icon } from '@iconify/react';
+import React, { useState } from 'react';
+import LightweightIcon from '../common/LightweightIcon';
 
 interface ContactFormData {
   name: string;
@@ -153,9 +153,9 @@ export default function ContactForm() {
       {submitStatus === 'success' && (
         <div className="bg-green-50 border border-green-200 rounded-lg p-4 mb-6">
           <div className="flex items-center">
-            <Icon icon="mdi:check-circle" className="text-green-600 mr-3" width={20} height={20} />
+            <LightweightIcon name="mdi:check-circle" className="text-green-600 mr-3" size={20} />
             <p className="text-green-800">
-              Thank you for your message! We'll get back to you within 24 hours.
+              Thank you for your message! Well get back to you within 24 hours.
             </p>
           </div>
         </div>
@@ -164,7 +164,7 @@ export default function ContactForm() {
       {submitStatus === 'error' && (
         <div className="bg-red-50 border border-red-200 rounded-lg p-4 mb-6">
           <div className="flex items-center">
-            <Icon icon="mdi:alert-circle" className="text-red-600 mr-3" width={20} height={20} />
+            <LightweightIcon name="mdi:alert-circle" className="text-red-600 mr-3" size={20} />
             <p className="text-red-800">
               {errorMessage}
             </p>
@@ -191,7 +191,7 @@ export default function ContactForm() {
             />
             {errors.name && (
               <p className="mt-1 text-sm text-red-600 flex items-center gap-1">
-                <Icon icon="mdi:alert-circle" width={16} height={16} />
+                <LightweightIcon name="mdi:alert-circle" size={16} />
                 {errors.name}
               </p>
             )}
@@ -214,7 +214,7 @@ export default function ContactForm() {
             />
             {errors.email && (
               <p className="mt-1 text-sm text-red-600 flex items-center gap-1">
-                <Icon icon="mdi:alert-circle" width={16} height={16} />
+                <LightweightIcon name="mdi:alert-circle" size={16} />
                 {errors.email}
               </p>
             )}
@@ -262,7 +262,7 @@ export default function ContactForm() {
             </select>
             {errors.destinationInterest && (
               <p className="mt-1 text-sm text-red-600 flex items-center gap-1">
-                <Icon icon="mdi:alert-circle" width={16} height={16} />
+                <LightweightIcon name="mdi:alert-circle" size={16} />
                 {errors.destinationInterest}
               </p>
             )}
@@ -303,7 +303,7 @@ export default function ContactForm() {
           />
           {errors.subject && (
             <p className="mt-1 text-sm text-red-600 flex items-center gap-1">
-              <Icon icon="mdi:alert-circle" width={16} height={16} />
+              <LightweightIcon name="mdi:alert-circle" size={16} />
               {errors.subject}
             </p>
           )}
@@ -326,7 +326,7 @@ export default function ContactForm() {
           />
           {errors.message && (
             <p className="mt-1 text-sm text-red-600 flex items-center gap-1">
-              <Icon icon="mdi:alert-circle" width={16} height={16} />
+              <LightweightIcon name="mdi:alert-circle" size={16} />
               {errors.message}
             </p>
           )}
@@ -339,12 +339,12 @@ export default function ContactForm() {
         >
           {isSubmitting ? (
             <>
-              <Icon icon="mdi:loading" className="animate-spin" width={20} height={20} />
+              <LightweightIcon name="mdi:loading" className="animate-spin" size={20} />
               Sending...
             </>
           ) : (
             <>
-              <Icon icon="mdi:send" width={20} height={20} />
+              <LightweightIcon name="mdi:send" size={20} />
               Send Message
             </>
           )}

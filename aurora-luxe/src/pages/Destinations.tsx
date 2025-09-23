@@ -1,9 +1,19 @@
 'use client';
 
-// import Footer from '../components/common/Footer';
-import DestinationHeroSection from '../components/destinations/DestinationHeroSection'
-import TravelCategories from '../components/destinations/TravelCategories'
-import FeaturedLuxuryExperience from '../components/destinations/FeaturedLuxuryExperience'
+import dynamic from 'next/dynamic';
+import DestinationHeroSection from '../components/destinations/DestinationHeroSection';
+import FlyingPlaneLoader from '../components/common/FlyingPlaneLoader';
+
+// Lazy load heavy components
+const TravelCategories = dynamic(() => import('../components/destinations/TravelCategories'), {
+  loading: () => <FlyingPlaneLoader />,
+  ssr: false
+});
+
+const FeaturedLuxuryExperience = dynamic(() => import('../components/destinations/FeaturedLuxuryExperience'), {
+  loading: () => <FlyingPlaneLoader />,
+  ssr: false
+});
 
 export default function Destinations() {
   return (

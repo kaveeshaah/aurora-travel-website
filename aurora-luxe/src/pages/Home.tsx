@@ -1,11 +1,24 @@
 'use client';
 
+import dynamic from 'next/dynamic';
 import HeroSection from '../components/home/HeroSection';
-import FeaturedDestinations from '../components/home/FeaturedDestinations';
-import FeaturedExperiences from '../components/home/FeaturedExperiences';
-import TrendingDestination from '../components/home/TrendingDestination';
-// import WhyChooseUs from '../components/home/WhyChooseUs';
-// import Testimonials from '../components/home/Testimonials';
+import FlyingPlaneLoader from '../components/common/FlyingPlaneLoader';
+
+// Lazy load heavy components
+const FeaturedDestinations = dynamic(() => import('../components/home/FeaturedDestinations'), {
+  loading: () => <FlyingPlaneLoader />,
+  ssr: false
+});
+
+const FeaturedExperiences = dynamic(() => import('../components/home/FeaturedExperiences'), {
+  loading: () => <FlyingPlaneLoader />,
+  ssr: false
+});
+
+const TrendingDestination = dynamic(() => import('../components/home/TrendingDestination'), {
+  loading: () => <FlyingPlaneLoader />,
+  ssr: false
+});
 
 export default function Home() {
   return (
