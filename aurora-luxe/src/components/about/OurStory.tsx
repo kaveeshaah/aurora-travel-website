@@ -25,7 +25,7 @@ export default function OurStory() {
   }, []);
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-slate-50 to-stone-100">
+    <section id="our-story" className="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-slate-50 to-stone-100">
       {/* Background Image */}
       <div className="absolute inset-0 z-0">
         <Image
