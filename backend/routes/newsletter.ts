@@ -42,7 +42,7 @@ const newsletterValidation = [
 ];
 
 // POST /api/newsletter - Subscribe to newsletter
-router.post('/', newsletterValidation, async (req: Request, res: Response) => {
+router.post('/', newsletterValidation, async (req: Request, res: Response): Promise<any> => {
   try {
     // Check validation errors
     const errors = validationResult(req);
@@ -123,7 +123,7 @@ router.post('/', newsletterValidation, async (req: Request, res: Response) => {
       }
     };
 
-    res.status(201).json(response);
+    return res.status(201).json(response);
 
   } catch (error) {
     if (error instanceof ConflictError) {
@@ -146,7 +146,7 @@ router.post('/', newsletterValidation, async (req: Request, res: Response) => {
 // POST /api/newsletter/unsubscribe - Unsubscribe from newsletter
 router.post('/unsubscribe', [
   body('email').isEmail().normalizeEmail().withMessage('Please provide a valid email address')
-], async (req: Request, res: Response) => {
+], async (req: Request, res: Response): Promise<any> => {
   try {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
@@ -189,7 +189,7 @@ router.post('/unsubscribe', [
       success: true,
       message: 'You have been successfully unsubscribed from our newsletter'
     };
-    res.json(response);
+    return res.json(response);
 
   } catch (error) {
     if (error instanceof NotFoundError) {
