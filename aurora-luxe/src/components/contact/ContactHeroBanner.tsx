@@ -74,7 +74,15 @@ export default function ContactHeroBanner() {
               {heroContent.sectionIndicator}
             </h2>
             <br />
-            <ChevronDown className="w-6 h-6 animate-bounce text-amber-200" />
+            <ChevronDown
+              className="w-6 h-6 animate-bounce text-amber-200 hover:text-amber-100 transition-colors cursor-pointer"
+              onClick={() => {
+                document.getElementById('contact-form')?.scrollIntoView({
+                  behavior: 'smooth',
+                  block: 'start'
+                });
+              }}
+            />
           </div>
         </div>
       </div>

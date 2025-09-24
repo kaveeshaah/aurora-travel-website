@@ -39,28 +39,28 @@ const FeaturedExperiences = () => {
   };
 
   return (
-    <section className="w-full flex flex-col items-center justify-center py-20 bg-gradient-to-br from-gray-50 to-white">
+    <section className="w-full flex flex-col items-center justify-center py-12 sm:py-16 md:py-20 bg-gradient-to-br from-gray-50 to-white">
       {/* Header */}
       <br />
       <br />
-      <div className="text-center mb-16">
-        <div className="flex items-center justify-center mb-8">
-          <div className="h-px bg-gradient-to-r from-transparent via-amber-400 to-transparent w-48"></div>
+      <div className="text-center mb-8 sm:mb-12 md:mb-16 px-4">
+        <div className="flex items-center justify-center mb-6 sm:mb-8">
+          <div className="h-px bg-gradient-to-r from-transparent via-amber-400 to-transparent w-32 sm:w-48"></div>
         </div>
         <br />
-        <h2 className="font-serif text-3xl lg:text-4xl text-slate-800 mb-6 tracking-tight">
+        <h2 className="font-serif text-2xl sm:text-3xl lg:text-4xl text-slate-800 mb-4 sm:mb-6 tracking-tight">
           Featured Experiences
         </h2>
         <br />
-        <p className="text-lg lg:text-xl text-slate-600 font-lato">
+        <p className="text-base sm:text-lg lg:text-xl text-slate-600 font-lato">
           Discover extraordinary experiences crafted for the discerning traveler
         </p>
         <br />
       </div>
 
       {/* Slideshow Container */}
-      <div className="relative w-full max-w-7xl mx-auto px-4">
-        <div className="relative overflow-hidden rounded-3xl shadow-2xl bg-white">
+      <div className="relative w-full max-w-7xl mx-auto px-4 sm:px-6">
+        <div className="relative overflow-hidden rounded-2xl sm:rounded-3xl shadow-lg sm:shadow-2xl bg-white">
           {/* Slides */}
           <div 
             className="flex transition-transform duration-700 ease-in-out"
@@ -68,27 +68,27 @@ const FeaturedExperiences = () => {
           >
             {featuredExperiences.map((exp) => (
               <div key={exp.id} className="w-full flex-shrink-0 relative group">
-                <div className="relative w-full h-[600px] md:h-[650px] flex overflow-hidden">
+                <div className="relative w-full h-[400px] sm:h-[500px] md:h-[600px] lg:h-[650px] flex flex-col sm:flex-row overflow-hidden">
                   {/* Text Content Box - Left Side */}
-                  <div className="w-2/5 flex items-center justify-center p-8 relative z-10" 
+                  <div className="w-full sm:w-2/5 flex items-center justify-center p-4 sm:p-6 md:p-8 relative z-10 order-2 sm:order-1" 
                        style={{background: 'linear-gradient(135deg, rgba(15, 23, 42, 0.95) 0%, rgba(30, 41, 59, 0.95) 100%)'}}>
-                    <div className="text-white max-w-sm transform transition-all duration-700 group-hover:scale-105 mb-8">
-                      <h3 className="text-3xl font-serif font-bold mb-6 text-white leading-tight tracking-wide">
+                    <div className="text-white max-w-sm transform transition-all duration-700 group-hover:scale-105 mb-4 sm:mb-8 text-center sm:text-left">
+                      <h3 className="text-xl sm:text-2xl md:text-3xl font-serif font-bold mb-3 sm:mb-4 md:mb-6 text-white leading-tight tracking-wide">
                         {exp.title}
                       </h3>
                       <br />
-                      <p className="text-white/90 mb-8 leading-relaxed text-lg font-lato font-light">
+                      <p className="text-white/90 mb-4 sm:mb-6 md:mb-8 leading-relaxed text-sm sm:text-base md:text-lg font-lato font-light">
                         {exp.description}
                       </p>
                       <br />
-                      <button className="w-20 py-3 text-white border-2 border-white rounded-full text-lg font-lato font-medium font-bold hover:bg-white hover:text-black transition-all duration-300 cursor-pointer">
+                      <button className="w-16 sm:w-20 py-2 sm:py-3 text-white border-2 border-white rounded-full text-sm sm:text-base md:text-lg font-lato font-medium font-bold hover:bg-white hover:text-black transition-all duration-300 cursor-pointer">
                         VIEW
                       </button>
                     </div>
                   </div>
                   
                   {/* Image - Right Side */}
-                  <div className="w-3/5 relative overflow-hidden">
+                  <div className="w-full sm:w-3/5 relative overflow-hidden order-1 sm:order-2">
                     <Image
                       src={exp.image}
                       alt={exp.title}
@@ -106,15 +106,15 @@ const FeaturedExperiences = () => {
         </div>
 
         {/* Slide indicators */}
-        <div className="flex justify-center mt-16 gap-6">
+        <div className="flex justify-center mt-8 sm:mt-12 md:mt-16 gap-4 sm:gap-6">
           {featuredExperiences.map((_, index) => (
             <button
               key={index}
               onClick={() => goToSlide(index)}
-              className={`relative h-1.5 rounded-full transition-all duration-700 ease-out hover:scale-110 ${
+              className={`relative h-1 sm:h-1.5 rounded-full transition-all duration-700 ease-out hover:scale-110 ${
                 index === currentSlide 
-                  ? 'w-16 shadow-lg' 
-                  : 'w-4 bg-gray-300 hover:bg-gray-400'
+                  ? 'w-12 sm:w-16 shadow-lg' 
+                  : 'w-3 sm:w-4 bg-gray-300 hover:bg-gray-400'
               }`}
               style={index === currentSlide ? {
                 background: 'linear-gradient(90deg, #0f172a 0%, #1e293b 100%)',
@@ -132,8 +132,8 @@ const FeaturedExperiences = () => {
         </div>
 
         {/* Slide counter */}
-        <div className="text-center mt-6 text-gray-500">
-          <span className="text-sm font-medium tracking-wider">
+        <div className="text-center mt-4 sm:mt-6 text-gray-500">
+          <span className="text-xs sm:text-sm font-medium tracking-wider">
             {currentSlide + 1} / {featuredExperiences.length}
           </span>
         </div>

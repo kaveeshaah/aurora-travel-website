@@ -19,29 +19,29 @@ const FeaturedDestinations = () => {
   }, []);
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-slate-50 via-amber-50 to-slate-100">
+    <section id="featured-destinations" className="relative min-h-screen flex items-center justify-center py-12 sm:py-16 md:py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-slate-50 via-amber-50 to-slate-100">
       <div className="relative z-10 max-w-7xl mx-auto w-full text-center">
         <div className={`transition-all duration-1000 ${
           isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'
         }`}>
           {/* Section Header */}
-          <div className="mb-16">
-            <div className="flex items-center justify-center mb-8">
-              <div className="h-px bg-gradient-to-r from-transparent via-amber-400 to-transparent w-48"></div>
+          <div className="mb-8 sm:mb-12 md:mb-16">
+            <div className="flex items-center justify-center mb-6 sm:mb-8">
+              <div className="h-px bg-gradient-to-r from-transparent via-amber-400 to-transparent w-32 sm:w-48"></div>
             </div>
             <br />
-            <h2 className="font-serif text-3xl lg:text-4xl text-slate-800 mb-6 tracking-tight">
+            <h2 className="font-serif text-2xl sm:text-3xl lg:text-4xl text-slate-800 mb-4 sm:mb-6 tracking-tight">
               Featured Destinations
             </h2>
             <br />
-            <p className="text-lg lg:text-xl text-slate-600 font-lato">
+            <p className="text-base sm:text-lg lg:text-xl text-slate-600 font-lato px-4 sm:px-0">
               Discover our handpicked destinations that promise unforgettable experiences
             </p>
             <br />
           </div>
 
           {/* Destinations Grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-12">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 lg:gap-12">
             {featuredDestinations.map((dest, index) => (
               <div
                 key={dest.id}
@@ -50,7 +50,7 @@ const FeaturedDestinations = () => {
                 }`}
                 style={{ transitionDelay: `${800 + index * 200}ms` }}
               >
-                <div className="relative rounded-3xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-500 ease-out transform hover:-translate-y-3 aspect-[9/16] bg-slate-800 will-change-transform">
+                <div className="relative rounded-2xl sm:rounded-3xl overflow-hidden shadow-lg sm:shadow-xl hover:shadow-2xl transition-all duration-500 ease-out transform hover:-translate-y-2 sm:hover:-translate-y-3 aspect-[3/4] sm:aspect-[9/16] bg-slate-800 will-change-transform">
                   <Image
                     src={dest.image}
                     alt={dest.name}
@@ -65,15 +65,15 @@ const FeaturedDestinations = () => {
                   <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                   
                   {/* Content */}
-                  <div className="absolute inset-0 flex flex-col items-center justify-center p-8">
-                    <h3 className="font-serif text-3xl lg:text-4xl font-bold text-white mb-8 uppercase tracking-wide drop-shadow-2xl transition-transform duration-500 group-hover:scale-105">
+                  <div className="absolute inset-0 flex flex-col items-center justify-center p-4 sm:p-6 md:p-8">
+                    <h3 className="font-serif text-2xl sm:text-3xl lg:text-4xl font-bold text-white mb-4 sm:mb-6 md:mb-8 uppercase tracking-wide drop-shadow-2xl transition-transform duration-500 group-hover:scale-105">
                       {dest.name}
                     </h3>
                     <br />
 
                     
                     <div className="opacity-0 group-hover:opacity-100 transition-all duration-700 ease-out transform translate-y-8 group-hover:translate-y-0">
-                      <button className="group/btn relative overflow-hidden bg-white text-slate-800 px-8 py-4 rounded-2xl font-medium text-base tracking-wide hover:shadow-xl transition-all duration-300 ease-out hover:scale-110 will-change-transform min-w-[160px] flex items-center justify-center space-x-2">
+                      <button className="group/btn relative overflow-hidden bg-white text-slate-800 px-4 sm:px-6 md:px-8 py-3 sm:py-4 rounded-xl sm:rounded-2xl font-medium text-sm sm:text-base tracking-wide hover:shadow-xl transition-all duration-300 ease-out hover:scale-110 will-change-transform min-w-[120px] sm:min-w-[160px] flex items-center justify-center space-x-2">
                         <span className="relative z-10 transition-transform duration-300 group-hover/btn:translate-x-1">Explore</span>
                         <ArrowRight className="w-4 h-4 relative z-10 transition-all duration-300 group-hover/btn:translate-x-1 group-hover/btn:scale-110" />
                         

@@ -59,10 +59,18 @@ export default function HeroSection() {
       </div>
 
       {/* Scroll Indicator */}
-      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-10">
+      <div
+        className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-10 cursor-pointer"
+        onClick={() => {
+          document.getElementById('featured-destinations')?.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }}
+      >
         <div className="animate-bounce">
           <svg
-            className="w-6 h-6 text-white"
+            className="w-6 h-6 text-white hover:text-gray-300 transition-colors"
             fill="none"
             stroke="currentColor"
             viewBox="0 0 24 24"

@@ -41,7 +41,7 @@ export default function OurImpact() {
           <div className="flex justify-center mb-16">
             <div className="w-24 h-px bg-amber-400" />
           </div>
-          
+
           <h2 className="font-serif text-4xl lg:text-6xl text-white text-center mb-20 tracking-wide">
             {impactContent.title}
           </h2>
