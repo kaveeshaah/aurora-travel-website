@@ -7,18 +7,14 @@ import LightweightIcon from '../common/LightweightIcon';
 interface ContactFormData {
   name: string;
   email: string;
-  phone: string;
   destinationInterest: string;
-  subject: string;
   message: string;
-  preferredContact: 'email' | 'phone' | 'either';
 }
 
 interface ValidationErrors {
   name?: string;
   email?: string;
   destinationInterest?: string;
-  subject?: string;
   message?: string;
   general?: string;
 }
@@ -28,11 +24,8 @@ export default function FormSection() {
   const [formData, setFormData] = useState<ContactFormData>({
     name: '',
     email: '',
-    phone: '',
     destinationInterest: '',
-    subject: '',
-    message: '',
-    preferredContact: 'email'
+    message: ''
   });
 
   const [errors, setErrors] = useState<ValidationErrors>({});
@@ -58,10 +51,6 @@ export default function FormSection() {
 
     if (!formData.destinationInterest.trim()) {
       newErrors.destinationInterest = 'Destination interest is required';
-    }
-
-    if (!formData.subject.trim()) {
-      newErrors.subject = 'Subject is required';
     }
 
     if (!formData.message.trim()) {
@@ -132,7 +121,7 @@ export default function FormSection() {
   };
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-slate-50 to-stone-100">
+    <section id="contact-form" className="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-slate-50 to-stone-100">
       {/* Background Image */}
       <div className="absolute inset-0 z-0">
         <Image
@@ -156,25 +145,57 @@ export default function FormSection() {
           <form onSubmit={handleSubmit} className="space-y-8 max-w-4xl w-full mx-auto bg-white/90 rounded-2xl shadow-2xl border border-amber-100 backdrop-blur-lg px-10 py-12">
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 px-4">
               <div>
-                <label htmlFor="fullName" className="block text-base font-bold text-slate-700 mb-2">Full Name *</label>
-                <input type="text" id="fullName" name="fullName" placeholder="Enter your full name" className="w-full border border-amber-200 rounded-xl px-6 py-4 focus:outline-none focus:ring-2 focus:ring-amber-400 font-lato bg-white text-lg" />
+                <label htmlFor="name" className="block text-base font-bold text-slate-700 mb-2">Name *</label>
+                <input
+                  type="text"
+                  id="name"
+                  name="name"
+                  value={formData.name}
+                  onChange={handleInputChange}
+                  placeholder="Enter your full name"
+                  className="w-full border border-amber-200 rounded-xl px-6 py-4 focus:outline-none focus:ring-2 focus:ring-amber-400 font-lato bg-white text-lg"
+                />
+                {errors.name && <p className="text-red-500 text-sm mt-1">{errors.name}</p>}
               </div>
               <div>
-                <label htmlFor="email" className="block text-base font-bold text-slate-700 mb-2">Email Address *</label>
-                <input type="email" id="email" name="email" placeholder="Enter your email address" className="w-full border border-amber-200 rounded-xl px-6 py-4 focus:outline-none focus:ring-2 focus:ring-amber-400 font-lato bg-white text-lg" />
+                <label htmlFor="email" className="block text-base font-bold text-slate-700 mb-2">Email *</label>
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  value={formData.email}
+                  onChange={handleInputChange}
+                  placeholder="Enter your email address"
+                  className="w-full border border-amber-200 rounded-xl px-6 py-4 focus:outline-none focus:ring-2 focus:ring-amber-400 font-lato bg-white text-lg"
+                />
+                {errors.email && <p className="text-red-500 text-sm mt-1">{errors.email}</p>}
               </div>
-              <div>
-                <label htmlFor="phoneNumber" className="block text-base font-bold text-slate-700 mb-2">Phone Number *</label>
-                <input type="text" id="phoneNumber" name="phoneNumber" placeholder="Enter your phone number" className="w-full border border-amber-200 rounded-xl px-6 py-4 focus:outline-none focus:ring-2 focus:ring-amber-400 font-lato bg-white text-lg" />
-              </div>
-              <div>
-                <label htmlFor="subject" className="block text-base font-bold text-slate-700 mb-2">Subject *</label>
-                <input type="text" id="subject" name="subject" placeholder="Enter the subject" className="w-full border border-amber-200 rounded-xl px-6 py-4 focus:outline-none focus:ring-2 focus:ring-amber-400 font-lato bg-white text-lg" />
+              <div className="sm:col-span-2">
+                <label htmlFor="destinationInterest" className="block text-base font-bold text-slate-700 mb-2">Destination Interest *</label>
+                <input
+                  type="text"
+                  id="destinationInterest"
+                  name="destinationInterest"
+                  value={formData.destinationInterest}
+                  onChange={handleInputChange}
+                  placeholder="Which destinations are you interested in?"
+                  className="w-full border border-amber-200 rounded-xl px-6 py-4 focus:outline-none focus:ring-2 focus:ring-amber-400 font-lato bg-white text-lg"
+                />
+                {errors.destinationInterest && <p className="text-red-500 text-sm mt-1">{errors.destinationInterest}</p>}
               </div>
             </div>
             <div className="px-4">
               <label htmlFor="message" className="block text-base font-bold text-slate-700 mb-2">Message *</label>
-              <textarea id="message" name="message" rows={6} placeholder="Type your message here." className="w-full border border-amber-200 rounded-xl px-6 py-4 focus:outline-none focus:ring-2 focus:ring-amber-400 font-lato bg-white text-lg resize-none" />
+              <textarea
+                id="message"
+                name="message"
+                value={formData.message}
+                onChange={handleInputChange}
+                rows={6}
+                placeholder="Type your message here."
+                className="w-full border border-amber-200 rounded-xl px-6 py-4 focus:outline-none focus:ring-2 focus:ring-amber-400 font-lato bg-white text-lg resize-none"
+              />
+              {errors.message && <p className="text-red-500 text-sm mt-1">{errors.message}</p>}
             </div>
             <div className="flex justify-end px-4 pt-2">
               <button type="submit" className="text-lg font-bold font-lato bg-gradient-to-r from-amber-500 to-indigo-600 hover:from-amber-600 hover:to-indigo-700 text-white rounded-xl px-12 py-4 shadow-lg transition-all duration-300 hover:scale-105 focus:outline-none focus:ring-2 focus:ring-amber-400">

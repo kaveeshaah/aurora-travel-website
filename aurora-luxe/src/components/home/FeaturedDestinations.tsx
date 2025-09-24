@@ -19,7 +19,7 @@ const FeaturedDestinations = () => {
   }, []);
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center py-12 sm:py-16 md:py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-slate-50 via-amber-50 to-slate-100">
+    <section id="featured-destinations" className="relative min-h-screen flex items-center justify-center py-12 sm:py-16 md:py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-slate-50 via-amber-50 to-slate-100">
       <div className="relative z-10 max-w-7xl mx-auto w-full text-center">
         <div className={`transition-all duration-1000 ${
           isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'
