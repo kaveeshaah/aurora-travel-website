@@ -5,6 +5,9 @@ const nextConfig: NextConfig = {
   output: 'export',
   trailingSlash: true,
   
+  // Fix workspace root warning
+  outputFileTracingRoot: process.cwd(),
+  
   // Performance optimizations
   experimental: {
     optimizePackageImports: ['lucide-react', 'rsuite'],
