@@ -69,7 +69,7 @@ const Footer = () => {
             <button
               type="submit"
               aria-label="Send"
-              className="w-12 h-12 flex items-center justify-center text-white border-2 border-white rounded-full hover:bg-white hover:text-slate-800 transition-all duration-300 cursor-pointer"
+              className="w-12 h-12 flex items-center justify-center text-white border-2 border-white rounded-full hover:bg-white hover:text-slate-800 transition-all duration-100 cursor-pointer"
             >
               <LightweightIcon name="mdi:send" size={20} />
             </button>

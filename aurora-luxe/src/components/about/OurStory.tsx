@@ -45,7 +45,7 @@ export default function OurStory() {
           <div className="flex justify-center mb-16">
             <div className="w-24 h-px bg-amber-500" />
           </div>
-          
+
           <h2 className="font-serif text-4xl lg:text-5xl text-slate-800 mb-20 text-center tracking-wide">
             {storyContent.title}
           </h2>
