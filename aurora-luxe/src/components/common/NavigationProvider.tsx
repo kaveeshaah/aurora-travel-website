@@ -26,12 +26,23 @@ export default function NavigationProvider({ children }: NavigationProviderProps
   const pathname = usePathname();
   const [isLoading, setIsLoading] = useState(false);
   const [targetPath, setTargetPath] = useState<string | null>(null);
+  const [safetyTimerId, setSafetyTimerId] = useState<number | null>(null);
 
   const navigate = (path: string) => {
     if (path === pathname) return; // Don't show loader for same page
     
     setTargetPath(path);
     setIsLoading(true);
+    
+    // Safety: ensure we never keep the loader forever
+    if (safetyTimerId) {
+      clearTimeout(safetyTimerId);
+    }
+    const id = window.setTimeout(() => {
+      setIsLoading(false);
+      setTargetPath(null);
+    }, 8000); // hard cap at 8s
+    setSafetyTimerId(id);
     
     // Add a minimum loading time for better UX
     setTimeout(() => {
@@ -40,16 +51,22 @@ export default function NavigationProvider({ children }: NavigationProviderProps
   };
 
   useEffect(() => {
-    if (targetPath && pathname === targetPath) {
-      // Add a small delay to ensure smooth transition
-      const timer = setTimeout(() => {
+    // If we navigated and the path changed (regardless of exact match), stop loader shortly after
+    if (isLoading) {
+      const timer = window.setTimeout(() => {
         setIsLoading(false);
         setTargetPath(null);
-      }, 800);
-      
+      }, 400); // brief delay to let content render
       return () => clearTimeout(timer);
     }
-  }, [pathname, targetPath]);
+  }, [pathname]);
+
+  useEffect(() => {
+    return () => {
+      // Cleanup on unmount
+      if (safetyTimerId) clearTimeout(safetyTimerId);
+    };
+  }, [safetyTimerId]);
 
   // Note: We intentionally avoid forcing a loader on browser back/forward navigation
   // to prevent the loader from getting stuck when the route doesn't change as expected.

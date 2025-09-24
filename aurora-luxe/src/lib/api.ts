@@ -1,11 +1,11 @@
 // API configuration and utility functions
 const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000/api';
 
-export interface ApiResponse<T = any> {
+export interface ApiResponse<T = unknown> {
   success: boolean;
   message: string;
   data?: T;
-  errors?: any[];
+  errors?: string[];
 }
 
 export interface ContactFormData {
@@ -122,7 +122,7 @@ export const bookingApi = {
     return apiRequest(`/booking/${id}`);
   },
 
-  async updateBooking(id: string, updates: any): Promise<ApiResponse> {
+  async updateBooking(id: string, updates: Partial<BookingFormData>): Promise<ApiResponse> {
     return apiRequest(`/booking/${id}`, {
       method: 'PATCH',
       body: JSON.stringify(updates),
@@ -184,9 +184,11 @@ export const healthApi = {
   },
 };
 
-export default {
+const api = {
   contact: contactApi,
   booking: bookingApi,
   newsletter: newsletterApi,
   health: healthApi,
 };
+
+export default api;
