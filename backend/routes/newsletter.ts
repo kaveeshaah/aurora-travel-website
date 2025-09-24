@@ -47,10 +47,10 @@ router.post('/', newsletterValidation, async (req: Request, res: Response) => {
     // Check validation errors
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
-      const validationErrors: ValidationErrorType[] = errors.array().map(error => ({
-        field: error.type === 'field' ? error.path : 'unknown',
+      const validationErrors: any[] = errors.array().map((error: any) => ({
+        field: error.path || 'unknown',
         message: error.msg,
-        value: error.type === 'field' ? error.value : undefined
+        value: error.value
       }));
 
       return res.status(400).json({
@@ -139,7 +139,7 @@ router.post('/', newsletterValidation, async (req: Request, res: Response) => {
       success: false,
       message: 'Failed to subscribe to newsletter. Please try again later.'
     };
-    res.status(500).json(response);
+    return res.status(500).json(response);
   }
 });
 
@@ -150,10 +150,10 @@ router.post('/unsubscribe', [
   try {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
-      const validationErrors: ValidationErrorType[] = errors.array().map(error => ({
-        field: error.type === 'field' ? error.path : 'unknown',
+      const validationErrors: any[] = errors.array().map((error: any) => ({
+        field: error.path || 'unknown',
         message: error.msg,
-        value: error.type === 'field' ? error.value : undefined
+        value: error.value
       }));
 
       return res.status(400).json({
@@ -205,14 +205,16 @@ router.post('/unsubscribe', [
       success: false,
       message: 'Failed to unsubscribe. Please try again later.'
     };
-    res.status(500).json(response);
+    return res.status(500).json(response);
   }
 });
 
 // GET /api/newsletter - Get all subscribers (admin only - add authentication in production)
 router.get('/', (req: Request, res: Response) => {
   try {
-    const { status, limit = '100', offset = '0' }: NewsletterQueryParams = req.query;
+    const { status, limit = '100', offset = '0' } = req.query;
+    const limitNum = parseInt(limit as string);
+    const offsetNum = parseInt(offset as string);
     
     let filteredSubscribers = subscribers;
     
@@ -221,14 +223,14 @@ router.get('/', (req: Request, res: Response) => {
     }
     
     // Pagination
-    const startIndex = parseInt(offset);
-    const endIndex = startIndex + parseInt(limit);
+    const startIndex = offsetNum;
+    const endIndex = startIndex + limitNum;
     const paginatedSubscribers = filteredSubscribers.slice(startIndex, endIndex);
     
     const pagination: PaginationInfo = {
       total: filteredSubscribers.length,
-      limit: parseInt(limit),
-      offset: parseInt(offset),
+      limit: limitNum,
+      offset: offsetNum,
       hasMore: endIndex < filteredSubscribers.length
     };
     
