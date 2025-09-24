@@ -25,7 +25,7 @@ export default function NavigationProvider({ children }: NavigationProviderProps
   const router = useRouter();
   const pathname = usePathname();
   const [isLoading, setIsLoading] = useState(false);
-  const [targetPath, setTargetPath] = useState<string | null>(null);
+  const [, setTargetPath] = useState<string | null>(null);
   const [safetyTimerId, setSafetyTimerId] = useState<number | null>(null);
 
   const navigate = (path: string) => {
@@ -59,7 +59,7 @@ export default function NavigationProvider({ children }: NavigationProviderProps
       }, 400); // brief delay to let content render
       return () => clearTimeout(timer);
     }
-  }, [pathname]);
+  }, [pathname, isLoading]);
 
   useEffect(() => {
     return () => {
