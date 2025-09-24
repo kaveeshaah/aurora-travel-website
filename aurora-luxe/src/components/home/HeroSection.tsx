@@ -49,7 +49,7 @@ export default function HeroSection() {
           <br></br>
           <button
             onClick={() => navigate('/destinations')}
-            className="w-50 h-20 py-3 text-white border-6 border-white rounded-full text-xl font-medium hover:bg-white hover:text-black transition-all duration-300"
+            className="w-50 h-20 py-3 text-white border-6 border-white rounded-full text-xl font-medium hover:bg-white hover:text-black transition-all duration-300 cursor-pointer"
              aria-label="Explore destinations"
         >
             WHERE TO?

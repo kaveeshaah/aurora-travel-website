@@ -53,7 +53,7 @@ export default function InfoSection() {
         <div className="absolute inset-0 bg-gradient-to-br from-amber-50/60 to-orange-50/60" />
       </div>
 
-      <div className="relative z-10 px-6 max-w-6xl mx-auto w-full">
+      <div className="relative z-10 text-center px-4 max-w-4xl mx-auto">
         <div className={`transition-all duration-1000 delay-500 ${
           isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
         }`}>
@@ -67,58 +67,77 @@ export default function InfoSection() {
             Contact Information
           </h2>
           <br />
+          <br />
 
-          <div className="flex justify-center">
-            <div className="bg-white/90 rounded-2xl p-12 shadow-2xl border border-amber-100 max-w-4xl w-full backdrop-blur-sm">
-              <div>
-                <h3 className="font-serif text-3xl lg:text-4xl text-slate-900 mb-12 tracking-wide text-center">
-                  Get in Touch
-                </h3>
-
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-                  {contactInfo.map((info, index) => {
-                    const IconComponent = info.icon;
-                    return (
-                      <div key={index} className="group">
-                        <div className="flex items-start gap-6">
-                          <div className="flex-shrink-0 w-16 h-16 bg-amber-100 rounded-xl flex items-center justify-center group-hover:bg-amber-500 transition-all duration-300">
-                            <IconComponent className="w-8 h-8 text-amber-700 group-hover:text-white transition-colors duration-300" />
-                          </div>
-                          <div className="flex-1">
-                            <h4 className="font-serif text-xl text-slate-900 mb-3 group-hover:text-amber-700 transition-colors duration-300">
-                              {info.title}
-                            </h4>
-                            <div className="space-y-1">
-                              {info.details.map((detail, detailIndex) => (
-                                <p key={detailIndex} className="text-slate-600 text-base font-lato leading-relaxed">
-                                  {detail}
-                                </p>
-                              ))}
-                            </div>
-                          </div>
-                        </div>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 max-w-6xl mx-auto">
+            {/* Left Side */}
+            <div className="space-y-16">
+              {contactInfo.slice(0, 2).map((info, index) => {
+                const IconComponent = info.icon;
+                return (
+                  <div key={index} className="flex flex-col lg:flex-row lg:items-start lg:gap-8 text-center lg:text-left">
+                    <div className="flex-shrink-0 inline-flex items-center justify-center w-16 h-16 bg-amber-100 rounded-full mb-6 lg:mb-0 mx-auto lg:mx-0">
+                      <IconComponent className="w-8 h-8 text-amber-700" />
+                    </div>
+                    <div className="flex-1">
+                      <h3 className="font-serif text-2xl text-slate-900 mb-4 tracking-wide">
+                        {info.title}
+                      </h3>
+                      <div className="space-y-3">
+                        {info.details.map((detail, detailIndex) => (
+                          <p key={detailIndex} className="text-slate-600 leading-relaxed text-lg font-lato">
+                            {detail}
+                          </p>
+                        ))}
                       </div>
-                    );
-                  })}
-                </div>
-
-                <div className="mt-16 pt-12 border-t border-amber-200">
-                  <h4 className="font-serif text-xl text-slate-900 mb-6 text-center">
-                    Follow Our Journey
-                  </h4>
-                  <div className="flex justify-center space-x-6">
-                    <button className="w-12 h-12 bg-slate-900 text-white rounded-full flex items-center justify-center hover:bg-slate-800 hover:scale-110 transition-all duration-300 shadow-lg">
-                      <span className="text-sm font-semibold">f</span>
-                    </button>
-                    <button className="w-12 h-12 bg-amber-500 text-white rounded-full flex items-center justify-center hover:bg-amber-600 hover:scale-110 transition-all duration-300 shadow-lg">
-                      <span className="text-sm font-semibold">t</span>
-                    </button>
-                    <button className="w-12 h-12 bg-slate-700 text-white rounded-full flex items-center justify-center hover:bg-slate-600 hover:scale-110 transition-all duration-300 shadow-lg">
-                      <span className="text-sm font-semibold">i</span>
-                    </button>
+                    </div>
                   </div>
-                </div>
-              </div>
+                );
+              })}
+            </div>
+
+            {/* Right Side */}
+            <div className="space-y-16">
+              {contactInfo.slice(2, 4).map((info, index) => {
+                const IconComponent = info.icon;
+                return (
+                  <div key={index} className="flex flex-col lg:flex-row lg:items-start lg:gap-8 text-center lg:text-left">
+                    <div className="flex-shrink-0 inline-flex items-center justify-center w-16 h-16 bg-amber-100 rounded-full mb-6 lg:mb-0 mx-auto lg:mx-0">
+                      <IconComponent className="w-8 h-8 text-amber-700" />
+                    </div>
+                    <div className="flex-1">
+                      <h3 className="font-serif text-2xl text-slate-900 mb-4 tracking-wide">
+                        {info.title}
+                      </h3>
+                      <div className="space-y-3">
+                        {info.details.map((detail, detailIndex) => (
+                          <p key={detailIndex} className="text-slate-600 leading-relaxed text-lg font-lato">
+                            {detail}
+                          </p>
+                        ))}
+                      </div>
+                      <br />
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+
+          <div className="mt-20 pt-12 border-t border-amber-200 max-w-3xl mx-auto">
+            <h3 className="font-serif text-2xl text-slate-900 mb-8 text-center tracking-wide">
+              Follow Our Journey
+            </h3>
+            <div className="flex justify-center space-x-6">
+              <button className="w-12 h-12 bg-slate-900 text-white rounded-full flex items-center justify-center hover:bg-slate-800 hover:scale-110 transition-all duration-300 shadow-lg">
+                <span className="text-sm font-semibold">f</span>
+              </button>
+              <button className="w-12 h-12 bg-amber-500 text-white rounded-full flex items-center justify-center hover:bg-amber-600 hover:scale-110 transition-all duration-300 shadow-lg">
+                <span className="text-sm font-semibold">t</span>
+              </button>
+              <button className="w-12 h-12 bg-slate-700 text-white rounded-full flex items-center justify-center hover:bg-slate-600 hover:scale-110 transition-all duration-300 shadow-lg">
+                <span className="text-sm font-semibold">i</span>
+              </button>
             </div>
           </div>
         </div>

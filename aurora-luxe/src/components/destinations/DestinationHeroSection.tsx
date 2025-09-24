@@ -73,7 +73,13 @@ export default function HeroSection() {
           <br></br>
           <br></br>
           <button
-            className="w-50 h-20 py-3 text-white border-6 border-white rounded-full text-xl font-bold hover:bg-white hover:text-black transition-all duration-300"
+            onClick={() => {
+              document.getElementById('destination-cards')?.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+              });
+            }}
+            className="w-50 h-20 py-3 text-white border-6 border-white rounded-full text-xl font-bold hover:bg-white hover:text-black transition-all duration-300 cursor-pointer"
              aria-label="Explore destinations"
         >
             Where to?
