@@ -102,11 +102,8 @@ export default function FormSection() {
         setFormData({
           name: '',
           email: '',
-          phone: '',
           destinationInterest: '',
-          subject: '',
-          message: '',
-          preferredContact: 'email'
+          message: ''
         });
         setErrors({});
       } else {
