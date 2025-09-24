@@ -177,6 +177,9 @@ router.patch('/:id', (req: Request, res: Response) => {
 
     // Update contact
     const baseContact = contacts[contactIndex];
+    if (!baseContact) {
+      throw new NotFoundError('Contact');
+    }
 
     const updatedContact: Contact = {
       ...baseContact,
