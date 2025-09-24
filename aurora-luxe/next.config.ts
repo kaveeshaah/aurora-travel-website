@@ -1,6 +1,10 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  // Static export configuration for Netlify
+  output: 'export',
+  trailingSlash: true,
+  
   // Performance optimizations
   experimental: {
     optimizePackageImports: ['lucide-react', 'rsuite'],
@@ -8,6 +12,7 @@ const nextConfig: NextConfig = {
   
   // Image optimization
   images: {
+    unoptimized: true, // Required for static export
     remotePatterns: [
       {
         protocol: 'https',
