@@ -68,7 +68,6 @@ export function MapSectionLayout() {
               {/* Decorative border */}
               <div className="absolute inset-0 rounded-3xl sm:rounded-[2rem] border-2 border-amber-300/30 pointer-events-none"></div>
             </div>
-            <br />
           </div>
         </div>
       </div>
