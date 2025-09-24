@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 import LightweightIcon from '../common/LightweightIcon';
 import { collection, addDoc, Timestamp } from 'firebase/firestore';
-import { db } from '@/lib/firebase';
+import { db } from '../../lib/firebase';
 
 interface FormData {
   name: string;
