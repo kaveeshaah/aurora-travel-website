@@ -50,7 +50,7 @@ export default function TravelCategories() {
   };
 
   return (
-    <section className="py-16 px-4 bg-white min-h-screen flex flex-col justify-center">
+    <section id="destination-cards" className="py-16 px-4 bg-white min-h-screen flex flex-col justify-center">
       <div className="w-full">
         {/* Category Headers */}
         <div className="flex justify-center items-center mb-20 py-8">

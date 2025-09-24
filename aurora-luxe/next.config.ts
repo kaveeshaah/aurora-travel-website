@@ -28,9 +28,6 @@ const nextConfig: NextConfig = {
     minimumCacheTTL: 60 * 60 * 24 * 30, // 30 days
   },
   
-  // Bundle optimization
-  swcMinify: true,
-  
   // Compression
   compress: true,
   
@@ -53,6 +50,11 @@ const nextConfig: NextConfig = {
       };
     }
     return config;
+  },
+  
+  // Explicitly set workspace root
+  turbopack: {
+    root: 'E:/My Projects/Travel/aurora-luxe',
   },
 };
 
