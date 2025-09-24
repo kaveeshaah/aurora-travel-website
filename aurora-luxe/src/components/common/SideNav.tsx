@@ -97,7 +97,7 @@ export default function SideNav() {
         
         {/* Horizontal brand name when expanded */}
         {isOpen && (
-          <div className="mb-4 text-center">
+          <div className="mb- text-center">
             <span className="text-sm font-serif text-white font-bold tracking-wide font-lato">
               Aurora Luxe Travels
             </span>
