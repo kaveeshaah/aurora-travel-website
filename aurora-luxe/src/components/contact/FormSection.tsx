@@ -129,78 +129,75 @@ export default function FormSection() {
         />
         <div className="absolute inset-0 bg-gradient-to-br from-slate-50/70 to-stone-100/70" />
       </div>
-      <div className="relative z-10 text-center px-6 max-w-5xl mx-auto">
-        <div className="transition-all duration-1000 delay-300 opacity-100 translate-y-0">
-          <div className="flex justify-center mb-16">
-            <div className="w-24 h-px bg-amber-500" />
+      <div className="relative z-10 text-center px-6 max-w-2xl mx-auto w-full">
+        <h2 className="font-serif text-3xl lg:text-4xl text-slate-800 mb-12 text-center">
+          Contact Us
+        </h2>
+        <br />
+        <br />
+        <form onSubmit={handleSubmit} className="space-y-8 w-full">
+          <div>
+            <input
+              type="text"
+              id="name"
+              name="name"
+              value={formData.name}
+              onChange={handleInputChange}
+              placeholder="Enter your full name"
+              className="w-full border border-gray-300 rounded-lg px-4 py-6 focus:outline-none focus:border-gray-500 bg-white text-base text-gray-700"
+            />
+            {errors.name && <p className="text-red-500 text-sm mt-1">{errors.name}</p>}
           </div>
-          <h2 className="font-serif text-4xl lg:text-5xl text-slate-800 mb-20 text-center tracking-wide">
-            Contact Us
-          </h2>
           <br />
+          <div>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              value={formData.email}
+              onChange={handleInputChange}
+              placeholder="Enter your Email"
+              className="w-full border border-gray-300 rounded-lg px-4 py-6 focus:outline-none focus:border-gray-500 bg-white text-base text-gray-700"
+            />
+            {errors.email && <p className="text-red-500 text-sm mt-1">{errors.email}</p>}
+          </div>
           <br />
-          <form onSubmit={handleSubmit} className="space-y-8 max-w-4xl w-full mx-auto bg-white/90 rounded-2xl shadow-2xl border border-amber-100 backdrop-blur-lg px-10 py-12">
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 px-4">
-              <div>
-                <label htmlFor="name" className="block text-base font-bold text-slate-700 mb-2">Name *</label>
-                <input
-                  type="text"
-                  id="name"
-                  name="name"
-                  value={formData.name}
-                  onChange={handleInputChange}
-                  placeholder="Enter your full name"
-                  className="w-full border border-amber-200 rounded-xl px-6 py-4 focus:outline-none focus:ring-2 focus:ring-amber-400 font-lato bg-white text-lg"
-                />
-                {errors.name && <p className="text-red-500 text-sm mt-1">{errors.name}</p>}
-              </div>
-              <div>
-                <label htmlFor="email" className="block text-base font-bold text-slate-700 mb-2">Email *</label>
-                <input
-                  type="email"
-                  id="email"
-                  name="email"
-                  value={formData.email}
-                  onChange={handleInputChange}
-                  placeholder="Enter your email address"
-                  className="w-full border border-amber-200 rounded-xl px-6 py-4 focus:outline-none focus:ring-2 focus:ring-amber-400 font-lato bg-white text-lg"
-                />
-                {errors.email && <p className="text-red-500 text-sm mt-1">{errors.email}</p>}
-              </div>
-              <div className="sm:col-span-2">
-                <label htmlFor="destinationInterest" className="block text-base font-bold text-slate-700 mb-2">Destination Interest *</label>
-                <input
-                  type="text"
-                  id="destinationInterest"
-                  name="destinationInterest"
-                  value={formData.destinationInterest}
-                  onChange={handleInputChange}
-                  placeholder="Which destinations are you interested in?"
-                  className="w-full border border-amber-200 rounded-xl px-6 py-4 focus:outline-none focus:ring-2 focus:ring-amber-400 font-lato bg-white text-lg"
-                />
-                {errors.destinationInterest && <p className="text-red-500 text-sm mt-1">{errors.destinationInterest}</p>}
-              </div>
-            </div>
-            <div className="px-4">
-              <label htmlFor="message" className="block text-base font-bold text-slate-700 mb-2">Message *</label>
-              <textarea
-                id="message"
-                name="message"
-                value={formData.message}
-                onChange={handleInputChange}
-                rows={6}
-                placeholder="Type your message here."
-                className="w-full border border-amber-200 rounded-xl px-6 py-4 focus:outline-none focus:ring-2 focus:ring-amber-400 font-lato bg-white text-lg resize-none"
-              />
-              {errors.message && <p className="text-red-500 text-sm mt-1">{errors.message}</p>}
-            </div>
-            <div className="flex justify-end px-4 pt-2">
-              <button type="submit" className="text-lg font-bold font-lato bg-gradient-to-r from-amber-500 to-indigo-600 hover:from-amber-600 hover:to-indigo-700 text-white rounded-xl px-12 py-4 shadow-lg transition-all duration-300 hover:scale-105 focus:outline-none focus:ring-2 focus:ring-amber-400">
-                Send Message
-              </button>
-            </div>
-          </form>
-        </div>
+          <div>
+            <input
+              type="text"
+              id="destinationInterest"
+              name="destinationInterest"
+              value={formData.destinationInterest}
+              onChange={handleInputChange}
+              placeholder="Which Destination are you interested In?"
+              className="w-full border border-gray-300 rounded-lg px-4 py-6 focus:outline-none focus:border-gray-500 bg-white text-base text-gray-700"
+            />
+            {errors.destinationInterest && <p className="text-red-500 text-sm mt-1">{errors.destinationInterest}</p>}
+          </div>
+          <br />
+          <div>
+            <textarea
+              id="message"
+              name="message"
+              value={formData.message}
+              onChange={handleInputChange}
+              rows={6}
+              placeholder="Message"
+              className="w-full border border-gray-300 rounded-lg px-4 py-4 focus:outline-none focus:border-gray-500 bg-white text-base text-gray-700 resize-none"
+            />
+            {errors.message && <p className="text-red-500 text-sm mt-1">{errors.message}</p>}
+          </div>
+          <br />
+          <div className="flex justify-center pt-4">
+            <button
+              type="submit"
+              disabled={isSubmitting}
+              className="bg-white border border-gray-300 rounded-full px-8 py-3 text-gray-700 font-medium hover:bg-gray-50 focus:outline-none focus:border-gray-500 transition-colors"
+            >
+              {isSubmitting ? 'Sending...' : 'Send Message'}
+            </button>
+          </div>
+        </form>
       </div>
     </section>
   );
