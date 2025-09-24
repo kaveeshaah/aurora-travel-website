@@ -8,7 +8,6 @@ import { ServerConfig, HealthCheckResponse, AppError } from './types';
 
 // Import routes
 import contactRoutes from './routes/contact';
-import bookingRoutes from './routes/booking';
 import newsletterRoutes from './routes/newsletter';
 
 // Load environment variables
@@ -65,7 +64,6 @@ app.get('/health', (_req: Request, res: Response) => {
 
 // API routes
 app.use('/api/contact', contactRoutes);
-app.use('/api/booking', bookingRoutes);
 app.use('/api/newsletter', newsletterRoutes);
 
 // 404 handler

@@ -52,10 +52,6 @@ const nextConfig: NextConfig = {
     return config;
   },
   
-  // Explicitly set workspace root
-  turbopack: {
-    root: 'E:/My Projects/Travel/aurora-luxe',
-  },
 };
 
 export default nextConfig;

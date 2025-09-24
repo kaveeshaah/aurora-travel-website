@@ -49,61 +49,6 @@ export interface ContactUpdateData {
   notes?: string;
 }
 
-// Booking types
-export interface Booking {
-  id: string;
-  firstName: string;
-  lastName: string;
-  email: string;
-  phone: string;
-  destination: string;
-  travelDates: {
-    start: string;
-    end: string;
-  };
-  travelers: number;
-  budget?: number;
-  specialRequests?: string;
-  accommodationType: 'luxury' | 'boutique' | 'resort' | 'villa' | 'hotel';
-  interests: string[];
-  status: 'inquiry' | 'quoted' | 'confirmed' | 'cancelled' | 'completed';
-  priority: 'low' | 'normal' | 'high' | 'urgent';
-  estimatedCost?: number;
-  notes?: string;
-  createdAt: string;
-  updatedAt: string;
-}
-
-export interface BookingFormData {
-  firstName: string;
-  lastName: string;
-  email: string;
-  phone: string;
-  destination: string;
-  travelDates: {
-    start: string;
-    end: string;
-  };
-  travelers: number;
-  budget?: number;
-  specialRequests?: string;
-  accommodationType?: 'luxury' | 'boutique' | 'resort' | 'villa' | 'hotel';
-  interests?: string[];
-}
-
-export interface BookingUpdateData {
-  status?: 'inquiry' | 'quoted' | 'confirmed' | 'cancelled' | 'completed';
-  priority?: 'low' | 'normal' | 'high' | 'urgent';
-  estimatedCost?: number;
-  notes?: string;
-}
-
-export interface BookingQueryParams {
-  status?: string;
-  destination?: string;
-  limit?: number;
-  offset?: number;
-}
 
 // Newsletter types
 export interface NewsletterSubscriber {

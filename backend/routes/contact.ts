@@ -170,16 +170,18 @@ router.patch('/:id', (req: Request, res: Response) => {
     const { status, notes }: ContactUpdateData = req.body;
     
     const contactIndex = contacts.findIndex(c => c.id === id);
-    
+
     if (contactIndex === -1) {
       throw new NotFoundError('Contact');
     }
 
     // Update contact
+    const baseContact = contacts[contactIndex];
+
     const updatedContact: Contact = {
-      ...contacts[contactIndex],
-      ...(status && { status }),
-      ...(notes !== undefined && { notes }),
+      ...baseContact,
+      status: status || baseContact.status,
+      notes: notes !== undefined ? notes : baseContact.notes,
       updatedAt: new Date().toISOString()
     };
     contacts[contactIndex] = updatedContact;

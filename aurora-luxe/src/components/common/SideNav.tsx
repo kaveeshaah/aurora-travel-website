@@ -27,7 +27,7 @@ export default function SideNav() {
           onClick={() => setIsOpen(false)}
         />
       )}
-      
+
       <aside
         className={`fixed left-0 top-0 h-screen bg-slate-800 z-50 py-8 transition-all duration-300 ${
           isOpen ? 'w-64' : 'w-20'
@@ -70,7 +70,7 @@ export default function SideNav() {
                   className="text-white flex-shrink-0 transition-all duration-200 group-hover:text-blue-300" 
                 />
                 {isOpen && (
-                  <span className="ml-4 text-sm font-bold text-white whitespace-nowrap font-lato tracking-wide">
+                  <span className="ml-24 text-sm font-bold text-white whitespace-nowrap font-lato tracking-wide">
                     {item.label}
                   </span>
                 )}
